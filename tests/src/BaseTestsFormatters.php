@@ -6,6 +6,7 @@ namespace vadimcontenthunter\MyLogger\Tests\src;
 
 use PHPUnit\Framework\TestCase;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
+use vadimcontenthunter\MyLogger\exceptions\MyLoggerException;
 
 class BaseTestsFormatters extends TestCase
 {
@@ -31,10 +32,9 @@ class BaseTestsFormatters extends TestCase
      */
     public function testMessageWithPlaceholdersWithoutParameterContexts()
     {
-        $expectedResult = 'The file {name} was created successfully.';
         $baseMessage = 'The file {name} was created successfully.';
-        $resultMessage = $this->baseFormatter->getMessage($baseMessage);
-        $this->assertEquals($expectedResult, $resultMessage);
+        $this->expectException(MyLoggerException::class);
+        $this->baseFormatter->getMessage($baseMessage);
     }
 
     /**

@@ -1,3 +1,5 @@
 /vendor
 /index.php
 /.phpunit.result.cache
+/phpinfo.php
+/tests/coverage
