@@ -44,6 +44,7 @@
         <exclude name="PEAR.WhiteSpace.ObjectOperatorIndent.Incorrect" />
         <exclude name="PEAR.WhiteSpace.ScopeIndent.IncorrectExact" />
         <exclude name="Generic.Commenting.DocComment.NonParamGroup" />
+        <exclude-pattern>tests/*</exclude-pattern>
     </rule>
 
     <file>src/*</file>
