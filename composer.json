@@ -31,6 +31,9 @@
         ],
         "phpunit_tests_all":[
             "./vendor/bin/phpunit"
+        ],
+        "phpdoc": [
+            "php phpDocumentor.phar -d ./src -t ./docs/"
         ]
     }
 }

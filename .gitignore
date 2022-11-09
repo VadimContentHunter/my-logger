@@ -1,3 +1,7 @@
 /vendor
 /index.php
 /.phpunit.result.cache
+/.phpdoc
+/phpcs.xml.dist
+/phpInfo.php
+/phpDocumentor.phar
