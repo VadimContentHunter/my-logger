@@ -1,5 +1,7 @@
 /vendor
 /index.php
 /.phpunit.result.cache
-/phpinfo.php
-/tests/coverage
+/.phpdoc
+/phpcs.xml.dist
+/phpInfo.php
+/phpDocumentor.phar

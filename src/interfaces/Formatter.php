@@ -4,15 +4,23 @@ declare(strict_types=1);
 
 namespace vadimcontenthunter\MyLogger\interfaces;
 
-use vadimcontenthunter\MyLogger\exceptions\MyLoggerException;
-
+/**
+ * Данный интерфейс должны реализовывать все классы, которые будут заниматься форматированием сообщения.
+ *
+ * @package   MyLogger_Interfaces
+ * @author    Vadim Volkovskyi <project.k.vadim@gmail.com>
+ * @copyright (c) Vadim Volkovskyi 2022
+ */
 interface Formatter
 {
     /**
-     * @param \Stringable|string $message
-     * @param array $context
-     * @throws MyLoggerException
+     * Метод возвращает отформатированную строку
+     *
+     * @param  \Stringable|string $message Входная строка, которая будет отформатирована.
+     * @param  array              $context Контекст данных для заполнителей.
      * @return string
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
     public function getMessage(\Stringable|string $message, array $context = []): string;
 }
