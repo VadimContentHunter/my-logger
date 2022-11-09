@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace vadimcontenthunter\MyLogger\exceptions;
 
 /**
- * Основной класс исключений для MyLogger
+ * Исключение в проекте MyLogger
  *
  * @package   MyLogger_Exceptions
  * @author    Vadim Volkovskyi <project.k.vadim@gmail.com>
