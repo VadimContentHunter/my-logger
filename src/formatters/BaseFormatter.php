@@ -29,6 +29,8 @@ class BaseFormatter implements Formatter
      *                        ]
      *
      * @return string
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
     public function getMessage(\Stringable|string $message, array $context = array()): string
     {

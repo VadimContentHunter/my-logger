@@ -19,6 +19,8 @@ interface Formatter
      * @param  \Stringable|string $message Входная строка, которая будет отформатирована.
      * @param  array              $context Контекст данных для заполнителей.
      * @return string
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
     public function getMessage(\Stringable|string $message, array $context = []): string;
 }
