@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace vadimcontenthunter\MyLogger\interfaces;
 
-use Psr\Log\LogLevel;
-
 /**
  * Данный интерфейс должны реализовывать все классы, которые будут заниматься форматированием сообщения.
  *
@@ -36,9 +34,9 @@ interface Formatter
     /**
      * Возвращает уровень лога
      *
-     * @return LogLevel
+     * @return string
      */
-    public function getStatusLog(): LogLevel;
+    public function getStatusLog(): string;
 
     /**
      * Возвращает дату и время фиксации лога
@@ -53,4 +51,13 @@ interface Formatter
      * @return string
      */
     public function generateMessageLog(): string;
+
+    /**
+     * Проверка правильности сгенерированного сообщения
+     *
+     * @param string $message Сообщение для проверки
+     *
+     * @return bool Возвращает true, в случае если сгенерированное сообщение соответствует формату иначе false.
+     */
+    public function checkGenerateMessage(string $message): bool;
 }
