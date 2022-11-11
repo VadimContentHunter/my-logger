@@ -15,7 +15,10 @@ class BaseFormatterTest extends TestCase
 
     public function setUp(): void
     {
-        $this->baseFormatter = new BaseFormatter();
+        $statusLog = '';
+        $message = '';
+        $context = [];
+        $this->baseFormatter = new BaseFormatter($statusLog, $message, $context);
     }
 
     /**
@@ -33,7 +36,8 @@ class BaseFormatterTest extends TestCase
         array $context,
         $expected
     ): void {
-        $resultMessage = $this->baseFormatter->getMessageLog($message, $context);
+        $this->baseFormatter->setMessageLog($message, $context);
+        $resultMessage = $this->baseFormatter->getMessageLog();
         $this->assertEquals($expected, $resultMessage);
     }
 
@@ -52,7 +56,8 @@ class BaseFormatterTest extends TestCase
         \Exception $objException
     ): void {
         $this->expectException($objException::class);
-        $this->baseFormatter->getMessageLog($message, $context);
+        $this->baseFormatter->setMessageLog($message, $context);
+        $this->baseFormatter->getMessageLog();
     }
 
     public function providerWithRightMessageAndContext(): array
