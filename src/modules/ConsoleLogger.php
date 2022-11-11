@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace vadimcontenthunter\MyLogger\modules;
 
 use Psr\Log\LoggerInterface;
+use vadimcontenthunter\MyLogger\interfaces\Formatter;
 
 /**
  * Логгер фиксирует события в консоль
@@ -32,27 +33,24 @@ class ConsoleLogger implements LoggerInterface
     private bool $saveToLogList = true;
 
     /**
+     * Форматер для сообщений
+     *
+     * @var Formatter
+     */
+    private Formatter $formatter;
+
+    /**
      * Initializes the MyLogger
      *
+     * @param Formatter $_formatter     Форматер для сообщений
      * @param bool $_saveToLogList - true - Сохранять все логи;
      *                             - false - НЕ сохранять логи
      */
-    public function __construct(bool $_saveToLogList = true)
+    public function __construct(Formatter $_formatter, bool $_saveToLogList = true)
     {
+        $this->formatter = $_formatter;
         $this->listLogs = [];
         $this->saveToLogList = $_saveToLogList;
-    }
-
-    /**
-     * Проверка на уникальности сообщения среди сохраненных в списке логов.
-     *
-     * @param string $message Сообщение которое будет проверяться
-     *
-     * @return bool Возвращает false, в случае если сообщение не уникально иначе true.
-     */
-    private function checkUniqueLogMessage(string $message): bool
-    {
-        return false;
     }
 
     /**
