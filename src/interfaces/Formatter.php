@@ -14,7 +14,7 @@ namespace vadimcontenthunter\MyLogger\interfaces;
 interface Formatter
 {
     /**
-     * Метод возвращает отформатированную строку
+     * Метод возвращает отформатированное сообщение
      *
      * @param  \Stringable|string $message Входная строка, которая будет отформатирована.
      * @param  array              $context Контекст данных для заполнителей.
@@ -22,5 +22,42 @@ interface Formatter
      *
      * @throws \Psr\Log\InvalidArgumentException
      */
-    public function getMessage(\Stringable|string $message, array $context = []): string;
+    public function getMessageLog(\Stringable|string $message, array $context = []): string;
+
+    /**
+     * Возвращает уникальный индекс лога
+     *
+     * @return string
+     */
+    public function getIndexLog(): string;
+
+    /**
+     * Возвращает уровень лога
+     *
+     * @return string
+     */
+    public function getStatusLog(): string;
+
+    /**
+     * Возвращает дату и время фиксации лога
+     *
+     * @return string
+     */
+    public function getDataTime(): string;
+
+    /**
+     * Возвращает сгенерированную строку для лога
+     *
+     * @return string
+     */
+    public function generateMessageLog(): string;
+
+    /**
+     * Проверка правильности сгенерированного сообщения
+     *
+     * @param string $message Сообщение для проверки
+     *
+     * @return bool Возвращает true, в случае если сгенерированное сообщение соответствует формату иначе false.
+     */
+    public function checkGenerateMessage(string $message): bool;
 }

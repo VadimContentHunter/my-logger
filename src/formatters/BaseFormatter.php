@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace vadimcontenthunter\MyLogger\formatters;
 
+use Psr\Log\LogLevel;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
 
 /**
@@ -32,8 +33,62 @@ class BaseFormatter implements Formatter
      *
      * @throws \Psr\Log\InvalidArgumentException
      */
-    public function getMessage(\Stringable|string $message, array $context = array()): string
+    public function getMessageLog(\Stringable|string $message, array $context = array()): string
     {
         return '';
+    }
+
+    /**
+     * Возвращает уникальный индекс лога
+     *
+     * @return string
+     */
+    public function getIndexLog(): string
+    {
+        return '';
+    }
+
+    /**
+     * Возвращает уровень лога
+     *
+     * @return string
+     */
+    public function getStatusLog(): string
+    {
+        return '';
+    }
+
+    /**
+     * Возвращает дату и время фиксации лога
+     *
+     * @return string
+     */
+    public function getDataTime(): string
+    {
+        return '';
+    }
+
+    /**
+     * Генерация сообщения лога
+     *
+     * @param string $message Основное сообщение
+     *
+     * @return string
+     */
+    public function generateMessageLog(string $message): string
+    {
+        return '';
+    }
+
+    /**
+     * Проверка правильности сгенерированного сообщения
+     *
+     * @param string $message Сообщение для проверки
+     *
+     * @return bool Возвращает true, в случае если сгенерированное сообщение соответствует формату иначе false.
+     */
+    public function checkGenerateMessage(string $message): bool
+    {
+        return false;
     }
 }
