@@ -16,13 +16,9 @@ interface Formatter
     /**
      * Метод возвращает отформатированное сообщение
      *
-     * @param  \Stringable|string $message Входная строка, которая будет отформатирована.
-     * @param  array              $context Контекст данных для заполнителей.
      * @return string
-     *
-     * @throws \Psr\Log\InvalidArgumentException
      */
-    public function getMessageLog(\Stringable|string $message, array $context = []): string;
+    public function getMessageLog(): string;
 
     /**
      * Возвращает уникальный индекс лога

@@ -17,7 +17,53 @@ use vadimcontenthunter\MyLogger\interfaces\Formatter;
 class BaseFormatter implements Formatter
 {
     /**
-     * Метод возвращает отформатированную строку
+     * Описание лога
+     *
+     * @var string
+     */
+    private string $message = '';
+
+    /**
+     * Уникальный индекс
+     *
+     * @var string
+     */
+    private string $index = '';
+
+    /**
+     * Статус лога
+     *
+     * @var string
+     */
+    private string $statusLog = '';
+
+    /**
+     * Дата и время лога
+     *
+     * @var string
+     */
+    private string $dataTime = '';
+
+    /**
+     * Initializes the MyLogger
+     *
+     * @param string $_statusLog
+     * @param \Stringable|string $_message
+     * @param array $_context
+     */
+    public function __construct(
+        string $_statusLog,
+        \Stringable|string $_message,
+        array $_context = array(),
+    ) {
+        $this->setIndexLog();
+        $this->setDataTime();
+        $this->setStatusLog($_statusLog);
+        $this->setMessageLog($_message, $_context);
+    }
+
+    /**
+     * Форматирует строку для описания лога
      *
      * @param \Stringable|string  $message Входная строка, которая будет отформатирована.
      *                                     * Имена заполнителей ДОЛЖНЫ быть разделены одной открывающей фигурной скобкой { и одной закрывающей скобкой }.
@@ -29,13 +75,56 @@ class BaseFormatter implements Formatter
      *                        "name_placeholder" => "replacement string"
      *                        ]
      *
-     * @return string
+     * @return BaseFormatter
      *
      * @throws \Psr\Log\InvalidArgumentException
      */
-    public function getMessageLog(\Stringable|string $message, array $context = array()): string
+    public function setMessageLog(\Stringable|string $message, array $context = array()): BaseFormatter
     {
-        return '';
+        return $this;
+    }
+
+    /**
+     * Устанавливает индекс для лога
+     *
+     * @return BaseFormatter
+     */
+    public function setIndexLog(): BaseFormatter
+    {
+        return $this;
+    }
+
+    /**
+     * Устанавливает статус для лога
+     *
+     * @param string $statusLog Статус для лога
+     *
+     * @return BaseFormatter
+     */
+    public function setStatusLog(string $statusLog): BaseFormatter
+    {
+        return $this;
+    }
+
+    /**
+     * Устанавливает дату и время фиксации лога.
+     * Формат: 2001-03-10 17:16:18;
+     *
+     * @return BaseFormatter
+     */
+    public function setDataTime(): BaseFormatter
+    {
+        return $this;
+    }
+
+    /**
+     * Метод возвращает отформатированную строку
+     *
+     * @return string
+     */
+    public function getMessageLog(): string
+    {
+        return $this->message;
     }
 
     /**
@@ -45,7 +134,7 @@ class BaseFormatter implements Formatter
      */
     public function getIndexLog(): string
     {
-        return '';
+        return $this->index;
     }
 
     /**
@@ -55,7 +144,7 @@ class BaseFormatter implements Formatter
      */
     public function getStatusLog(): string
     {
-        return '';
+        return $this->statusLog;
     }
 
     /**
@@ -65,17 +154,15 @@ class BaseFormatter implements Formatter
      */
     public function getDataTime(): string
     {
-        return '';
+        return $this->dataTime;
     }
 
     /**
      * Генерация сообщения лога
      *
-     * @param string $message Основное сообщение
-     *
      * @return string
      */
-    public function generateMessageLog(string $message): string
+    public function generateMessageLog(): string
     {
         return '';
     }
