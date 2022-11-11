@@ -16,6 +16,136 @@ use Psr\Log\LoggerInterface;
 class ConsoleLogger implements LoggerInterface
 {
     /**
+     * Хранит все зафиксированные логи
+     *
+     * @var array
+     */
+    private array $listLogs = [];
+
+    /**
+     * Выполнять сохранения всех логов.
+     * - true - Да;
+     * - false - Нет;
+     *
+     * @var bool
+     */
+    private bool $saveToLogList = true;
+
+    /**
+     * Initializes the MyLogger
+     *
+     * @param bool $_saveToLogList - true - Сохранять все логи;
+     *                             - false - НЕ сохранять логи
+     */
+    public function __construct(bool $_saveToLogList = true)
+    {
+        $this->listLogs = [];
+        $this->saveToLogList = $_saveToLogList;
+    }
+
+    /**
+     * Проверка на уникальности сообщения среди сохраненных в списке логов.
+     *
+     * @param string $message Сообщение которое будет проверяться
+     *
+     * @return bool Возвращает false, в случае если сообщение не уникально иначе true.
+     */
+    private function checkUniqueLogMessage(string $message): bool
+    {
+        return false;
+    }
+
+    /**
+     * Выводит сообщение лога по его идентификатор из списка сохраненных логов. (listLogs[id])
+     *
+     * Параметр "saveToLogList" должен быть true
+     *
+     * @param int $id Уникальный идентификатор лога
+     *
+     * @return string
+     */
+    public function getLogMessageFromListLogsById(int $id): string
+    {
+        return '';
+    }
+
+    /**
+     * Выводит сообщение лога по его уникальному индексу из списка сохраненных логов
+     *
+     * Параметр "saveToLogList" должен быть true
+     *
+     * @param string $index Уникальный индекс лога
+     *
+     * @return string
+     */
+    public function getLogMessageFromListLogsByIndex(string $index): string
+    {
+        return '';
+    }
+
+    /**
+     * Выводит сообщения логов по их статусу из списка сохраненных логов
+     *
+     * Параметр "saveToLogList" должен быть true
+     *
+     * @param string $statusLog Статус логов, которые нужно вывести
+     *
+     * @return array[string]
+     */
+    public function getLogMessageFromListLogsByStatusLog(string $statusLog): array
+    {
+        return [];
+    }
+
+     /**
+      * Выводит сообщения логов по их статусу из списка сохраненных логов
+      *
+      * Параметр "saveToLogList" должен быть true;
+      *
+      * @param string $fromDataTime От какой даты и времени (включительно); Формат:
+      *                             - 2001-03-10 17:16:18;
+      *                             - 2001-03-10;
+      *                             - 17:16:18;
+      * @param string $toDataTime   До какой даты и времени (включительно); Формат:
+      *                             - 2001-03-10 17:16:18;
+      *                             - 2001-03-10;
+      *                             - 17:16:18;
+      *
+      * @return array[string]
+      */
+    public function getLogMessageFromListLogsByDataTime(string $fromDataTime, string $toDataTime): array
+    {
+        return [];
+    }
+
+    /**
+     * Выводит сообщения логов по их сообщению, описанию логов из списка сохраненных логов
+     *
+     * Параметр "saveToLogList" должен быть true
+     *
+     * @param string $message Описание лога
+     *
+     * @return array[string]
+     */
+    public function getLogMessageFromListLogsByMessage(string $message): array
+    {
+        return [];
+    }
+
+    /**
+     * Добавляет сообщение в список логов
+     *
+     * Параметр "saveToLogList" должен быть true
+     *
+     * @param string $message сгенерированное сообщение
+     *
+     * @return void
+     */
+    private function addLogMessageInListLogs(string $message): void
+    {
+    }
+
+    /**
      * System is unusable.
      *
      * @param string|\Stringable $message
