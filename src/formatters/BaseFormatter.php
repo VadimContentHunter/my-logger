@@ -21,28 +21,28 @@ class BaseFormatter implements Formatter
      *
      * @var string
      */
-    private string $message = '';
+    protected string $message = '';
 
     /**
      * Уникальный индекс
      *
      * @var string
      */
-    private string $index = '';
+    protected string $index = '';
 
     /**
      * Статус лога
      *
      * @var string
      */
-    private string $statusLog = '';
+    protected string $statusLog = '';
 
     /**
      * Дата и время лога
      *
      * @var string
      */
-    private string $dataTime = '';
+    protected string $dataTime = '';
 
     /**
      * Initializes the MyLogger
