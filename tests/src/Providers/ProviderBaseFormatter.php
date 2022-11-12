@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace vadimcontenthunter\MyLogger\Tests\src;
+namespace vadimcontenthunter\MyLogger\Tests\src\Providers;
 
 class ProviderBaseFormatter
 {

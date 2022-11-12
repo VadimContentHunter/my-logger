@@ -7,7 +7,7 @@ namespace vadimcontenthunter\MyLogger\Tests\formattersTests;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\InvalidArgumentException;
 use vadimcontenthunter\MyLogger\formatters\BaseFormatter;
-use vadimcontenthunter\MyLogger\Tests\src\ProviderBaseFormatter;
+use vadimcontenthunter\MyLogger\Tests\src\Providers\ProviderBaseFormatter;
 
 class BaseFormatterTest extends TestCase
 {
