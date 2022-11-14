@@ -1,0 +1,55 @@
+<?php
+
+declare(strict_types=1);
+
+namespace  vadimcontenthunter\MyLogger\Tests\src\fakes;
+
+use vadimcontenthunter\MyLogger\formatters\BaseFormatter;
+
+/**
+ * Фейковый класс BaseFormatter. переопределяет SET методы.
+ *
+ * @package MyLogger_Tests_Fakes
+ * @author Vadim Volkovskyi <project.k.vadim@gmail.com>
+ * @copyright (c) Vadim Volkovskyi 2022
+ */
+class FakeBaseFormatter extends BaseFormatter
+{
+    public function __construct()
+    {
+        $this->message = '';
+        $this->index = '';
+        $this->statusLog = '';
+        $this->dataTime = '';
+    }
+
+    /**
+     * Метод для установки protected значений.
+     *
+     * @param string $_message
+     * @return FakeBaseFormatter
+     */
+    public function setMessageLogFake(string $_message = ''): FakeBaseFormatter
+    {
+        $this->message = $_message;
+        return $this;
+    }
+
+    public function setIndexLogFake(string $_index = ''): FakeBaseFormatter
+    {
+        $this->index = $_index;
+        return $this;
+    }
+
+    public function setStatusLogFake(string $_statusLog): FakeBaseFormatter
+    {
+        $this->statusLog = $_statusLog;
+        return $this;
+    }
+
+    public function setDataTimeFake(string $_dataTime = ''): FakeBaseFormatter
+    {
+        $this->dataTime = $_dataTime;
+        return $this;
+    }
+}
