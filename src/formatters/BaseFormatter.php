@@ -47,16 +47,25 @@ class BaseFormatter implements Formatter
     /**
      * Initializes the MyLogger
      *
-     * @param string $_statusLog
-     * @param \Stringable|string $_message
-     * @param array $_context
+     * @param string $_statusLog Статус для лога
+     * @param \Stringable|string $_message   Входная строка, которая будет отформатирована.
+     *                                       Имена заполнителей ДОЛЖНЫ быть разделены одной открывающей фигурной скобкой { и одной закрывающей скобкой }.
+     *                                       НЕ ДОЛЖНЫ быть пробелы между разделителями и именем заполнителя.
+     *                                       Имена заполнителей ДОЛЖНЫ состоять только из символов "A-Z, a-z, 0-9", символа подчеркивания "_" и точки ".".
+     * @param array $_context   Контекст данных для заполнителей, массив должен иметь следующий вид:
+     *                          ```php
+     *                          [
+     *                          "name_placeholder" => "replacement string"
+     *                          ]
+     * @param array $_indexes   Существующие индексы. Нужны для генерации индекса не похожего на один из этого списка.
      */
     public function __construct(
         string $_statusLog,
         \Stringable|string $_message,
-        array $_context = array(),
+        array $_context = [],
+        array $_indexes = []
     ) {
-        $this->setIndexLog();
+        $this->setIndexLog($_indexes);
         $this->setDataTime();
         $this->setStatusLog($_statusLog);
         $this->setMessageLog($_message, $_context);
@@ -87,9 +96,11 @@ class BaseFormatter implements Formatter
     /**
      * Устанавливает индекс для лога
      *
+     * @param array $indexes Существующие индексы. Нужны для генерации индекса не похожего на один из этого списка.
+     *
      * @return BaseFormatter
      */
-    public function setIndexLog(): BaseFormatter
+    public function setIndexLog(array $indexes): BaseFormatter
     {
         return $this;
     }
