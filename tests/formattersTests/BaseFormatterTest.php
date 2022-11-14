@@ -5,8 +5,12 @@ declare(strict_types=1);
 namespace vadimcontenthunter\MyLogger\Tests\formattersTests;
 
 use PHPUnit\Framework\TestCase;
-use Psr\Log\InvalidArgumentException;
+// use Psr\Log\InvalidArgumentException;
+
+use Psr\Log\LogLevel;
 use vadimcontenthunter\MyLogger\formatters\BaseFormatter;
+use vadimcontenthunter\MyLogger\Tests\src\fakes\FakeBaseFormatter;
+use vadimcontenthunter\MyLogger\Tests\src\providers\ProviderBaseFormatter;
 
 class BaseFormatterTest extends TestCase
 {
@@ -14,197 +18,272 @@ class BaseFormatterTest extends TestCase
 
     public function setUp(): void
     {
-        $this->baseFormatter = new BaseFormatter();
+        $statusLog = '';
+        $message = '';
+        $context = [];
+        $indexes = [];
+        $this->baseFormatter = new BaseFormatter($statusLog, $message, $context, $indexes);
     }
 
     /**
-     * Метод для проверки правильных кейсов
+     * Тест на проверку метода getMessageLog
      *
-     * @param string $message
-     * @param array $context
-     * @param mixed $expected
      * @return void
-     *
-     * @dataProvider providerWithRightMessageAndContext
      */
-    public function test_getMessage_withTheRightMessageAndContext_shouldReturnAString(
-        string $message,
-        array $context,
-        $expected
-    ): void {
-        $resultMessage = $this->baseFormatter->getMessage($message, $context);
+    public function test_getMessageLog_withoutParameters_shouldReturnAString(): void
+    {
+        $expected = 'The file was created successfully.';
+        $message = 'The file was created successfully.';
+        $fakeBaseFormatter = new FakeBaseFormatter();
+        $fakeBaseFormatter->setMessageLogFake($message);
+        $resultMessage = $fakeBaseFormatter->getMessageLog();
         $this->assertEquals($expected, $resultMessage);
     }
 
     /**
-     * Метод для проверки НЕКОРРЕКТНЫХ кейсов
+     * Тест на проверку метода getIndexLog
      *
-     * @param string $message
-     * @param array $context
+     * @return void
+     */
+    public function test_getIndexLog_withoutParameters_shouldReturnTheIndexAsAString(): void
+    {
+        $expected = '00005';
+        $index = '00005';
+        $fakeBaseFormatter = new FakeBaseFormatter();
+        $fakeBaseFormatter->setIndexLogFake($index);
+        $resultMessage = $fakeBaseFormatter->getIndexLog();
+        $this->assertEquals($expected, $resultMessage);
+    }
+
+    /**
+     * Тест на проверку метода getStatusLog
+     *
+     * @return void
+     */
+    public function test_getStatusLog_withoutParameters_shouldReturnTheStatusAsAString(): void
+    {
+        $expected = LogLevel::ALERT;
+        $status = LogLevel::ALERT;
+        $fakeBaseFormatter = new FakeBaseFormatter();
+        $fakeBaseFormatter->setStatusLogFake($status);
+        $resultMessage = $fakeBaseFormatter->getStatusLog();
+        $this->assertEquals($expected, $resultMessage);
+    }
+
+    /**
+     * Тест на проверку метода getDataTime
+     *
+     * @return void
+     */
+    public function test_getDataTime_withoutParameters_shouldReturnTheDateAndTimeAsAString(): void
+    {
+        $expected = '2022-03-10 17:16:18';
+        $message = '2022-03-10 17:16:18';
+        $fakeBaseFormatter = new FakeBaseFormatter();
+        $fakeBaseFormatter->setDataTimeFake($message);
+        $resultMessage = $fakeBaseFormatter->getDataTime();
+        $this->assertEquals($expected, $resultMessage);
+    }
+
+    /**
+     * Тест на проверку метода setIndexLog
+     *
+     * @return void
+     *
+     * @dataProvider providerWithIndexes
+     */
+    public function test_setIndexLog_withDifferentData_shouldReturnSequenceOfNumbersInAString(array $_indexes, string $expected): void
+    {
+        $resultIndexLog = $this->baseFormatter->setIndexLog($_indexes)->getIndexLog();
+        $this->assertEquals($expected, $resultIndexLog);
+    }
+
+    /**
+     * Проверки правильных кейсов для метода setStatusLog
+     *
+     * @param string $_statusLog    Статус лога
+     * @param string $expected      Ожидаемый статус лога
+     *
+     * @return void
+     *
+     * @dataProvider providerWithRightStatusLog
+     */
+    public function test_setStatusLog_withTheRightStatusLog_shouldReturnALogLevelString(string $_statusLog, string $expected): void
+    {
+        $resultStatusLog = $this->baseFormatter->setStatusLog($_statusLog)->getStatusLog();
+        $this->assertEquals($expected, $resultStatusLog);
+    }
+
+    /**
+     * Проверки НЕКОРРЕКТНЫХ кейсов для метода setStatusLog, который должны вызывать исключение
+     *
+     * @param string $_statusLog        Статус лога
+     * @param \Exception $objException  Объект исключения который должен появляться у метода
+     *
+     * @return void
+     *
+     * @dataProvider providerWithWrongStatusLog
+     */
+    public function test_setStatusLog_withTheWrongStatusLog_shouldReturnAnException(
+        string $_statusLog,
+        \Exception $objException
+    ): void {
+        $this->expectException($objException::class);
+        $this->baseFormatter->setStatusLog($_statusLog);
+    }
+
+    /**
+     * Тест метода setDataTime
+     *
+     * @return void
+     */
+    public function test_setDataTime_withoutParameters_shouldReturnTheDateAndTimeAsAString(): void
+    {
+        $resultDataTime = $this->baseFormatter->setDataTime()->getDataTime();
+        $date = date("Y-m-d");
+
+        if (
+            preg_match(
+                '~(?<date>^\d{4}-\d{2}-\d{2})(?<time>\s(?<hour>\d{2}):(?<minute>\d{2}):(?<second>\d{2}))?$~iu',
+                $resultDataTime,
+                $matches
+            )
+        ) {
+            if (!isset($matches['time'])) {
+                $this->assertEquals($date, $resultDataTime);
+            } elseif (
+                isset($matches['date'], $matches['time'], $matches['hour'], $matches['minute'], $matches['second']) &&
+                strcasecmp($matches['date'], $date) === 0
+            ) {
+                $this->assertTrue(true);
+            }
+        }
+
+        $this->assertTrue(false);
+    }
+
+    /**
+     * Проверки правильных кейсов для метода setMessageLog
+     *
+     * @param string $message   Сообщение лога
+     * @param array $context    Контекст параметров
+     * @param mixed $expected   Ожидаемый вид отформатировано строки
+     *
+     * @return void
+     *
+     * @dataProvider providerWithRightMessageAndContext
+     */
+    public function test_setMessageLog_withTheRightMessageAndContext_shouldReturnAString(
+        string $message,
+        array $context,
+        $expected
+    ): void {
+        $this->baseFormatter->setMessageLog($message, $context);
+        $resultMessage = $this->baseFormatter->getMessageLog();
+        $this->assertEquals($expected, $resultMessage);
+    }
+
+    /**
+     * Проверки НЕКОРРЕКТНЫХ кейсов для метода setMessageLog, который должны вызывать исключение
+     *
+     * @param string $message           Сообщение лога
+     * @param array $context            Контекст параметров
+     * @param \Exception $objException  Объект исключения который должен появляться у метода
+     *
      * @return void
      *
      * @dataProvider providerWithWrongMessageOrContext
      */
-    public function test_getMessage_withTheWrongMessageOrContext_shouldReturnAnException(
+    public function test_setMessageLog_withTheWrongMessageOrContext_shouldReturnAnException(
         string $message,
         array $context,
         \Exception $objException
     ): void {
         $this->expectException($objException::class);
-        $this->baseFormatter->getMessage($message, $context);
+        $this->baseFormatter->setMessageLog($message, $context);
+        $this->baseFormatter->getMessageLog();
+    }
+
+    /**
+     * Тест конструктора
+     *
+     * @return void
+     */
+    public function test_construct_withAllParameters_shouldReturnCorrectGetMethods(): void
+    {
+        $statusLog = LogLevel::INFO;
+        $message = 'The file {file_name} was {action} successfully.';
+        $context =  [
+            'file_name' => 'new_file.txt',
+            'action' => 'created'
+        ];
+        $indexes = [
+            '00001',
+            'next',
+            '00002',
+            'Indexes',
+        ];
+        $baseFormatter = new BaseFormatter($statusLog, $message, $context, $indexes);
+
+        $expectedGetIndex = '00003';
+        $expectedStatusLog = LogLevel::INFO;
+        $expectedMessageLog = 'The file new_file.txt was created successfully.';
+
+        $resGetIndex = $baseFormatter->getIndexLog();
+        $resGetDataTime = $baseFormatter->getDataTime();
+        $resGetStatusLog = $baseFormatter->getStatusLog();
+        $resGetMessageLog = $baseFormatter->getMessageLog();
+
+        if (
+            strcasecmp($resGetIndex, $expectedGetIndex) === 0 &&
+            strcasecmp($resGetStatusLog, $expectedStatusLog) === 0 &&
+            strcasecmp($resGetMessageLog, $expectedMessageLog) === 0
+        ) {
+            $date = date("Y-m-d");
+
+            if (
+                preg_match(
+                    '~(?<date>^\d{4}-\d{2}-\d{2})(?<time>\s(?<hour>\d{2}):(?<minute>\d{2}):(?<second>\d{2}))?$~iu',
+                    $resGetDataTime,
+                    $matches
+                )
+            ) {
+                if (!isset($matches['time'])) {
+                    $this->assertEquals($date, $resGetDataTime);
+                } elseif (
+                    isset($matches['date'], $matches['time'], $matches['hour'], $matches['minute'], $matches['second']) &&
+                    strcasecmp($matches['date'], $date) === 0
+                ) {
+                    $this->assertTrue(true);
+                }
+            }
+        }
+
+        $this->assertTrue(false);
     }
 
     public function providerWithRightMessageAndContext(): array
     {
-        return [
-            'Message without placeholders and parameter contexts' => [
-                'The file was created successfully.',
-                [],
-                'The file was created successfully.'
-            ],
-            'Message without placeholders with parameter contexts' => [
-                'The file was created successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                'The file was created successfully.'
-            ],
-            'Message with placeholders and parameter contexts' => [
-                'The file {file_name} was {action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                'The file new_file.txt was created successfully.'
-            ],
-            'Message contains more parameter context than placeholders' => [
-                'The file {file_name} was {action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created'],
-                    ['user' => 'user001'],
-                    ['date' => '05.11.2022'],
-                ],
-                'The file new_file.txt was created successfully.'
-            ],
-            'Message with right placeholders and parameter contexts' => [
-                'The file {fileName} was {action1} successfully.',
-                [
-                    ['fileName' => 'new_file.txt'],
-                    ['action1' => 'created']
-                ],
-                'The file new_file.txt was created successfully.'
-            ],
-        ];
+        return ProviderBaseFormatter::rightMessageAndContext();
     }
 
     public function providerWithWrongMessageOrContext(): array
     {
-        return [
-            'Message with placeholders without parameter contexts' => [
-                'The file {name} was created successfully.',
-                [],
-                new InvalidArgumentException()
-            ],
-            'Message contains more placeholders than parameter contexts' => [
-                'The file {file_name} was {action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                ],
-                new InvalidArgumentException()
-            ],
-            'invalid context parameter when messaged with placeholders and valid context parameters' => [
-                'The file {file_name} was {action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created'],
-                    ['sql' => [
-                        'SELECT count(*) FROM tAuthors;',
-                        'SELECT * FROM tAuthors WHERE AuthorFirstName="Александр";',
-                    ]],
-                ],
-                new InvalidArgumentException()
-            ],
-            '#1 Message with wrong placeholder and with right parameter contexts' => [
-                'The file file_name} was {action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                ],
-                new InvalidArgumentException()
-            ],
-            '#2 Message with wrong placeholder and with right parameter contexts' => [
-                'The file {file_name was {action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                new InvalidArgumentException()
-            ],
-            '#3 Message with wrong placeholder and with right parameter contexts' => [
-                'The file { file_name} was {action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                new InvalidArgumentException()
-            ],
-            '#4 Message with wrong placeholder and with right parameter contexts' => [
-                'The file {file_name } was {action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                new InvalidArgumentException()
-            ],
-            '#5 Message with wrong placeholder and with right parameter contexts' => [
-                'The file { file_name } was {action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                new InvalidArgumentException()
-            ],
-            '#6 Message with wrong placeholders and with right parameter contexts' => [
-                'The file file_name} was { action} successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                new InvalidArgumentException()
-            ],
-            '#7 Message with wrong placeholders and with right parameter contexts' => [
-                'The file file_name} was {action successfully.',
-                [
-                    ['file_name' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                new InvalidArgumentException()
-            ],
-            '#8 Message with wrong placeholder and with right parameter contexts' => [
-                'The file {file,name} was {action} successfully.',
-                [
-                    ['file,name' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                new InvalidArgumentException()
-            ],
-            '#9 Message with wrong placeholder and with right parameter contexts' => [
-                'The file {file_name#1} was {action} successfully.',
-                [
-                    ['file_name#1' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                new InvalidArgumentException()
-            ],
-            '#10 Message with wrong placeholder and with right parameter contexts' => [
-                'The file {имя} was {action} successfully.',
-                [
-                    ['Имя' => 'new_file.txt'],
-                    ['action' => 'created']
-                ],
-                new InvalidArgumentException()
-            ]
-        ];
+        return ProviderBaseFormatter::wrongMessageOrContext();
+    }
+
+    public function providerWithIndexes(): array
+    {
+        return ProviderBaseFormatter::indexes();
+    }
+
+    public function providerWithRightStatusLog(): array
+    {
+        return ProviderBaseFormatter::rightStatusLog();
+    }
+
+    public function providerWithWrongStatusLog(): array
+    {
+        return ProviderBaseFormatter::wrongStatusLog();
     }
 }
