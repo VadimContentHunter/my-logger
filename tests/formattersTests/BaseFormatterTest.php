@@ -21,7 +21,8 @@ class BaseFormatterTest extends TestCase
         $statusLog = '';
         $message = '';
         $context = [];
-        $this->baseFormatter = new BaseFormatter($statusLog, $message, $context);
+        $indexes = [];
+        $this->baseFormatter = new BaseFormatter($statusLog, $message, $context, $indexes);
     }
 
     /**
@@ -85,6 +86,83 @@ class BaseFormatterTest extends TestCase
     }
 
     /**
+     * Тест на проверку метода setIndexLog
+     *
+     * @return void
+     *
+     * @dataProvider providerWithIndexes
+     */
+    public function test_setIndexLog_withDifferentData_shouldReturnSequenceOfNumbersInAString(array $_indexes, string $expected): void
+    {
+        $resultIndexLog = $this->baseFormatter->setIndexLog($_indexes)->getIndexLog();
+        $this->assertEquals($expected, $resultIndexLog);
+    }
+
+    /**
+     * Проверки правильных кейсов для метода setStatusLog
+     *
+     * @param string $_statusLog    Статус лога
+     * @param string $expected      Ожидаемый статус лога
+     *
+     * @return void
+     *
+     * @dataProvider providerWithRightStatusLog
+     */
+    public function test_setStatusLog_withTheRightStatusLog_shouldReturnALogLevelString(string $_statusLog, string $expected): void
+    {
+        $resultStatusLog = $this->baseFormatter->setStatusLog($_statusLog)->getStatusLog();
+        $this->assertEquals($expected, $resultStatusLog);
+    }
+
+    /**
+     * Проверки НЕКОРРЕКТНЫХ кейсов для метода setStatusLog, который должны вызывать исключение
+     *
+     * @param string $_statusLog        Статус лога
+     * @param \Exception $objException  Объект исключения который должен появляться у метода
+     *
+     * @return void
+     *
+     * @dataProvider providerWithWrongStatusLog
+     */
+    public function test_setStatusLog_withTheWrongStatusLog_shouldReturnAnException(
+        string $_statusLog,
+        \Exception $objException
+    ): void {
+        $this->expectException($objException::class);
+        $this->baseFormatter->setStatusLog($_statusLog);
+    }
+
+    /**
+     * Тест метода setDataTime
+     *
+     * @return void
+     */
+    public function test_setDataTime_withoutParameters_shouldReturnTheDateAndTimeAsAString(): void
+    {
+        $resultDataTime = $this->baseFormatter->setDataTime()->getDataTime();
+        $date = date("Y-m-d");
+
+        if (
+            preg_match(
+                '~(?<date>^\d{4}-\d{2}-\d{2})(?<time>\s(?<hour>\d{2}):(?<minute>\d{2}):(?<second>\d{2}))?$~iu',
+                $resultDataTime,
+                $matches
+            )
+        ) {
+            if (!isset($matches['time'])) {
+                $this->assertEquals($date, $resultDataTime);
+            } elseif (
+                isset($matches['date'], $matches['time'], $matches['hour'], $matches['minute'], $matches['second']) &&
+                strcasecmp($matches['date'], $date) === 0
+            ) {
+                $this->assertTrue(true);
+            }
+        }
+
+        $this->assertTrue(false);
+    }
+
+    /**
      * Проверки правильных кейсов для метода setMessageLog
      *
      * @param string $message   Сообщение лога
@@ -126,13 +204,86 @@ class BaseFormatterTest extends TestCase
         $this->baseFormatter->getMessageLog();
     }
 
+    /**
+     * Тест конструктора
+     *
+     * @return void
+     */
+    public function test_construct_withAllParameters_shouldReturnCorrectGetMethods(): void
+    {
+        $statusLog = LogLevel::INFO;
+        $message = 'The file {file_name} was {action} successfully.';
+        $context =  [
+            'file_name' => 'new_file.txt',
+            'action' => 'created'
+        ];
+        $indexes = [
+            '00001',
+            'next',
+            '00002',
+            'Indexes',
+        ];
+        $baseFormatter = new BaseFormatter($statusLog, $message, $context, $indexes);
+
+        $expectedGetIndex = '00003';
+        $expectedStatusLog = LogLevel::INFO;
+        $expectedMessageLog = 'The file new_file.txt was created successfully.';
+
+        $resGetIndex = $baseFormatter->getIndexLog();
+        $resGetDataTime = $baseFormatter->getDataTime();
+        $resGetStatusLog = $baseFormatter->getStatusLog();
+        $resGetMessageLog = $baseFormatter->getMessageLog();
+
+        if (
+            strcasecmp($resGetIndex, $expectedGetIndex) === 0 &&
+            strcasecmp($resGetStatusLog, $expectedStatusLog) === 0 &&
+            strcasecmp($resGetMessageLog, $expectedMessageLog) === 0
+        ) {
+            $date = date("Y-m-d");
+
+            if (
+                preg_match(
+                    '~(?<date>^\d{4}-\d{2}-\d{2})(?<time>\s(?<hour>\d{2}):(?<minute>\d{2}):(?<second>\d{2}))?$~iu',
+                    $resGetDataTime,
+                    $matches
+                )
+            ) {
+                if (!isset($matches['time'])) {
+                    $this->assertEquals($date, $resGetDataTime);
+                } elseif (
+                    isset($matches['date'], $matches['time'], $matches['hour'], $matches['minute'], $matches['second']) &&
+                    strcasecmp($matches['date'], $date) === 0
+                ) {
+                    $this->assertTrue(true);
+                }
+            }
+        }
+
+        $this->assertTrue(false);
+    }
+
     public function providerWithRightMessageAndContext(): array
     {
-        return ProviderBaseFormatter::RightMessageAndContext();
+        return ProviderBaseFormatter::rightMessageAndContext();
     }
 
     public function providerWithWrongMessageOrContext(): array
     {
-        return ProviderBaseFormatter::WrongMessageOrContext();
+        return ProviderBaseFormatter::wrongMessageOrContext();
+    }
+
+    public function providerWithIndexes(): array
+    {
+        return ProviderBaseFormatter::indexes();
+    }
+
+    public function providerWithRightStatusLog(): array
+    {
+        return ProviderBaseFormatter::rightStatusLog();
+    }
+
+    public function providerWithWrongStatusLog(): array
+    {
+        return ProviderBaseFormatter::wrongStatusLog();
     }
 }
