@@ -33,16 +33,34 @@ class ConsoleLogger implements LoggerInterface
      */
     protected bool $saveToLogList = true;
 
+    protected string $formatterClass;
+
     /**
      * Initializes the ConsoleLogger
      *
-     * @param bool $_saveToLogList - true - Сохранять все логи;
-     *                             - false - НЕ сохранять логи
+     * @param string $_formatterClass название класса форматера
+     * @param bool $_saveToLogList  - true - Сохранять все логи;
+     *                              - false - НЕ сохранять логи
      */
-    public function __construct(bool $_saveToLogList = true)
+    public function __construct(string $_formatterClass, bool $_saveToLogList = true)
     {
         $this->listLogs = [];
         $this->saveToLogList = $_saveToLogList;
+        $this->formatterClass = $this->getFormatterClass($_formatterClass);
+    }
+
+    /**
+     * Проверяет название класса на корректность и возвращает название класса
+     *
+     * @param string $_formatterClass название класса форматера
+     *
+     * @throws NoFormatterException
+     *
+     * @return string
+     */
+    public function getFormatterClass(string $_formatterClass): string
+    {
+        return '';
     }
 
     /**
