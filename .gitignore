@@ -5,3 +5,4 @@
 /phpcs.xml.dist
 /phpInfo.php
 /phpDocumentor.phar
+/.vscode
