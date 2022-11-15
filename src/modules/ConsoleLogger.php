@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace vadimcontenthunter\MyLogger\modules;
 
 use Psr\Log\LoggerInterface;
+use vadimcontenthunter\MyLogger\exceptions\NoFormatterException;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
 
 /**
@@ -21,7 +22,7 @@ class ConsoleLogger implements LoggerInterface
      *
      * @var array
      */
-    private array $listLogs = [];
+    protected array $listLogs = [];
 
     /**
      * Выполнять сохранения всех логов.
@@ -30,25 +31,16 @@ class ConsoleLogger implements LoggerInterface
      *
      * @var bool
      */
-    private bool $saveToLogList = true;
+    protected bool $saveToLogList = true;
 
     /**
-     * Форматер для сообщений
+     * Initializes the ConsoleLogger
      *
-     * @var Formatter
-     */
-    private Formatter $formatter;
-
-    /**
-     * Initializes the MyLogger
-     *
-     * @param Formatter $_formatter     Форматер для сообщений
      * @param bool $_saveToLogList - true - Сохранять все логи;
      *                             - false - НЕ сохранять логи
      */
-    public function __construct(Formatter $_formatter, bool $_saveToLogList = true)
+    public function __construct(bool $_saveToLogList = true)
     {
-        $this->formatter = $_formatter;
         $this->listLogs = [];
         $this->saveToLogList = $_saveToLogList;
     }
@@ -131,15 +123,15 @@ class ConsoleLogger implements LoggerInterface
     }
 
     /**
-     * Добавляет сообщение в список логов
+     * Добавляет объект форматера в список логов
      *
      * Параметр "saveToLogList" должен быть true
      *
-     * @param string $message сгенерированное сообщение
+     * @param Formatter $formatter форматер с параметрами для сообщения.
      *
      * @return void
      */
-    private function addLogMessageInListLogs(string $message): void
+    protected function addLogMessageInListLogs(Formatter $formatter): void
     {
     }
 
