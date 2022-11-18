@@ -98,7 +98,7 @@ class ConsoleLogger implements LoggerInterface
      *
      * @param string $statusLog Статус логов, которые нужно вывести
      *
-     * @return array[string]
+     * @return array<string>
      */
     public function getLogMessageFromListLogsByStatusLog(string $statusLog): array
     {
@@ -119,7 +119,7 @@ class ConsoleLogger implements LoggerInterface
       *                             - 2001-03-10;
       *                             - 17:16:18;
       *
-      * @return array[string]
+      * @return array<string>
       */
     public function getLogMessageFromListLogsByDataTime(string $fromDataTime, string $toDataTime): array
     {
@@ -133,7 +133,7 @@ class ConsoleLogger implements LoggerInterface
      *
      * @param string $message Описание лога
      *
-     * @return array[string]
+     * @return array<string>
      */
     public function getLogMessageFromListLogsByMessage(string $message): array
     {
@@ -145,11 +145,11 @@ class ConsoleLogger implements LoggerInterface
      *
      * Параметр "saveToLogList" должен быть true
      *
-     * @param Formatter $formatter форматер с параметрами для сообщения.
+     * @param Formatter|array<Formatter> $formatter форматер с параметрами для сообщения. Или массив форматеров.
      *
      * @return void
      */
-    protected function addLogMessageInListLogs(Formatter $formatter): void
+    protected function addLogMessageInListLogs(Formatter|array $formatter): void
     {
     }
 
