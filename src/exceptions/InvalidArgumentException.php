@@ -14,7 +14,9 @@ namespace vadimcontenthunter\MyLogger\exceptions;
 class InvalidArgumentException extends MyLoggerException
 {
     /**
-     * Initializes the MyLoggerException
+     * Initializes the InvalidArgumentException
+     *
+     * @param string $_message
      */
     public function __construct(string $_message)
     {
