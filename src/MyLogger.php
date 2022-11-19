@@ -10,13 +10,11 @@ use Psr\Log\NullLogger;
 use Stringable;
 use Exception;
 use vadimcontenthunter\MyLogger\exceptions\NoLoggerException;
-use vadimcontenthunter\MyLogger\formatters\BaseFormatter;
-use vadimcontenthunter\MyLogger\interfaces\Formatter;
 
 /**
  * Класс является точкой входа для цепочного логирования.
  *
- * Благодаря этому можно подключать несколько логгеров и реализовывать для них общее логирование.
+ * Благодаря этому можно подключать несколько логгеров `и реализовывать для них общее логирование.
  *
  * @package   MyLogger
  * @author    Vadim Volkovskyi <project.k.vadim@gmail.com>
@@ -26,18 +24,19 @@ class MyLogger implements LoggerInterface
 {
     private array $loggers;
 
-    private Formatter $formatter;
-
     /**
      * Initializes the MyLogger
      *
-     * @param array $_loggers   Список логгеров, которые будут вызываться.
-     * @param Formatter $_formatter Форматер, который будет форматировать сообщения для логгера.
+     * @param array|LoggerInterface $_loggers Список логгеров, которые будут
+     *                                        вызываться. Или конкретный логгер
      */
-    public function __construct(array $_loggers = [new NullLogger()], Formatter $_formatter = new BaseFormatter())
+    public function __construct(array|LoggerInterface $_loggers = [new NullLogger()])
     {
-        $this->loggers = $_loggers;
-        $this->formatter = $_formatter;
+        if (is_array($_loggers)) {
+            $this->loggers = $_loggers;
+        } else {
+            $this->loggers = [$_loggers];
+        }
         $this->checkLoggers();
     }
 
@@ -62,11 +61,10 @@ class MyLogger implements LoggerInterface
      *
      * @param string|Stringable $message
      * @param mixed[] $context
-     * @param Formatter $_formatter
      *
      * @return void
      */
-    public function emergency(string|Stringable $message, array $context = [], Formatter $_formatter = null): void
+    public function emergency(string|Stringable $message, array $context = []): void
     {
     }
 
@@ -78,11 +76,10 @@ class MyLogger implements LoggerInterface
       *
       * @param string|Stringable $message
       * @param mixed[] $context
-      * @param Formatter $_formatter
       *
       * @return void
       */
-    public function alert(string|Stringable $message, array $context = [], Formatter $_formatter = null): void
+    public function alert(string|Stringable $message, array $context = []): void
     {
     }
 
@@ -93,11 +90,10 @@ class MyLogger implements LoggerInterface
      *
      * @param string|Stringable $message
      * @param mixed[] $context
-     * @param Formatter $_formatter
      *
      * @return void
      */
-    public function critical(string|Stringable $message, array $context = [], Formatter $_formatter = null): void
+    public function critical(string|Stringable $message, array $context = []): void
     {
     }
 
@@ -107,11 +103,10 @@ class MyLogger implements LoggerInterface
      *
      * @param string|Stringable $message
      * @param mixed[] $context
-     * @param Formatter $_formatter
      *
      * @return void
      */
-    public function error(string|Stringable $message, array $context = [], Formatter $_formatter = null): void
+    public function error(string|Stringable $message, array $context = []): void
     {
     }
 
@@ -120,11 +115,10 @@ class MyLogger implements LoggerInterface
       *
       * @param string|Stringable $message
       * @param mixed[] $context
-      * @param Formatter $_formatter
       *
       * @return void
       */
-    public function warning(string|Stringable $message, array $context = [], Formatter $_formatter = null): void
+    public function warning(string|Stringable $message, array $context = []): void
     {
     }
 
@@ -135,11 +129,10 @@ class MyLogger implements LoggerInterface
      *
      * @param string|Stringable $message
      * @param mixed[] $context
-     * @param Formatter $_formatter
      *
      * @return void
      */
-    public function notice(string|Stringable $message, array $context = [], Formatter $_formatter = null): void
+    public function notice(string|Stringable $message, array $context = []): void
     {
     }
 
@@ -148,11 +141,10 @@ class MyLogger implements LoggerInterface
       *
       * @param string|Stringable $message
       * @param mixed[] $context
-      * @param Formatter $_formatter
       *
       * @return void
       */
-    public function info(string|Stringable $message, array $context = [], Formatter $_formatter = null): void
+    public function info(string|Stringable $message, array $context = []): void
     {
     }
 
@@ -161,11 +153,10 @@ class MyLogger implements LoggerInterface
       *
       * @param string|Stringable $message
       * @param mixed[] $context
-      * @param Formatter $_formatter
       *
       * @return void
       */
-    public function debug(string|Stringable $message, array $context = [], Formatter $_formatter = null): void
+    public function debug(string|Stringable $message, array $context = []): void
     {
     }
 
@@ -175,13 +166,12 @@ class MyLogger implements LoggerInterface
      * @param mixed   $level
      * @param string|Stringable $message
      * @param mixed[] $context
-     * @param Formatter $_formatter
      *
      * @return void
      *
      * @throws \Psr\Log\InvalidArgumentException
      */
-    public function log(LogLevel $level, string|Stringable $message, array $context = [], Formatter $_formatter = null): void
+    public function log(LogLevel $level, string|Stringable $message, array $context = []): void
     {
     }
 }
