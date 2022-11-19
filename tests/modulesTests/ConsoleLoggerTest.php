@@ -86,6 +86,7 @@ class ConsoleLoggerTest extends TestCase
     public function test_addLogMessageInListLogs_withParameterFormatter_shouldAddToTheList(
         Formatter|array $formatter
     ): void {
+        $this->expectException(\vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException::class);
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($formatter);
 
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
@@ -130,6 +131,7 @@ class ConsoleLoggerTest extends TestCase
         Formatter|array $formatter,
         string $index
     ): void {
+        $this->expectException(\vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException::class);
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
@@ -152,6 +154,7 @@ class ConsoleLoggerTest extends TestCase
         Formatter|array $formatter,
         string $logLevel
     ): void {
+        $this->expectException(\vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException::class);
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
@@ -176,6 +179,7 @@ class ConsoleLoggerTest extends TestCase
         string $fromDataTime,
         string $toDataTime
     ): void {
+        $this->expectException(\vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException::class);
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
