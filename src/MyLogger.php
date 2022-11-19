@@ -27,8 +27,8 @@ class MyLogger implements LoggerInterface
     /**
      * Initializes the MyLogger
      *
-     * @param array|LoggerInterface $_loggers Список логгеров, которые будут
-     *                                        вызываться. Или конкретный логгер
+     * @param array<LoggerInterface>|LoggerInterface $_loggers Список логгеров, которые будут
+     *                                                         вызываться. Или конкретный логгер
      */
     public function __construct(array|LoggerInterface $_loggers = [new NullLogger()])
     {
