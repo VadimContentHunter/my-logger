@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace vadimcontenthunter\MyLogger\modules;
 
 use Psr\Log\LoggerInterface;
-use vadimcontenthunter\MyLogger\exceptions\NoFormatterException;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
+use vadimcontenthunter\MyLogger\exceptions\NoFormatterException;
+use vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException;
 
 /**
  * Логгер фиксирует события в консоль
@@ -95,6 +96,8 @@ class ConsoleLogger implements LoggerInterface
      * @param string $index Уникальный индекс лога
      *
      * @return string
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
      */
     public function getLogMessageFromListLogsByIndex(string $index): string
     {
@@ -109,6 +112,8 @@ class ConsoleLogger implements LoggerInterface
      * @param string $statusLog Статус логов, которые нужно вывести
      *
      * @return array<string>
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
      */
     public function getLogMessageFromListLogsByStatusLog(string $statusLog): array
     {
@@ -130,6 +135,8 @@ class ConsoleLogger implements LoggerInterface
       *                             - 17:16:18;
       *
       * @return array<string>
+      *
+      * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
       */
     public function getLogMessageFromListLogsByDataTime(string $fromDataTime, string $toDataTime): array
     {
@@ -157,10 +164,13 @@ class ConsoleLogger implements LoggerInterface
      *
      * @param Formatter|array<Formatter> $formatter форматер с параметрами для сообщения. Или массив форматеров.
      *
-     * @return void
+     * @return ConsoleLogger
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
      */
-    protected function addLogMessageInListLogs(Formatter|array $formatter): void
+    protected function addLogMessageInListLogs(Formatter|array $formatter): ConsoleLogger
     {
+        return $this;
     }
 
     /**
@@ -169,10 +179,11 @@ class ConsoleLogger implements LoggerInterface
      * @param string|\Stringable $message
      * @param mixed[] $context
      *
-     * @return void
+     * @return ConsoleLogger
      */
-    public function emergency(string|\Stringable $message, array $context = []): void
+    public function emergency(string|\Stringable $message, array $context = []): ConsoleLogger
     {
+        return $this;
     }
 
     /**
@@ -184,10 +195,11 @@ class ConsoleLogger implements LoggerInterface
      * @param string|\Stringable $message
      * @param mixed[] $context
      *
-     * @return void
+     * @return ConsoleLogger
      */
-    public function alert(string|\Stringable $message, array $context = []): void
+    public function alert(string|\Stringable $message, array $context = []): ConsoleLogger
     {
+        return $this;
     }
 
     /**
@@ -198,10 +210,11 @@ class ConsoleLogger implements LoggerInterface
      * @param string|\Stringable $message
      * @param mixed[] $context
      *
-     * @return void
+     * @return ConsoleLogger
      */
-    public function critical(string|\Stringable $message, array $context = []): void
+    public function critical(string|\Stringable $message, array $context = []): ConsoleLogger
     {
+        return $this;
     }
 
     /**
@@ -211,10 +224,11 @@ class ConsoleLogger implements LoggerInterface
      * @param string|\Stringable $message
      * @param mixed[] $context
      *
-     * @return void
+     * @return ConsoleLogger
      */
-    public function error(string|\Stringable $message, array $context = []): void
+    public function error(string|\Stringable $message, array $context = []): ConsoleLogger
     {
+        return $this;
     }
 
     /**
@@ -226,10 +240,11 @@ class ConsoleLogger implements LoggerInterface
      * @param string|\Stringable $message
      * @param mixed[] $context
      *
-     * @return void
+     * @return ConsoleLogger
      */
-    public function warning(string|\Stringable $message, array $context = []): void
+    public function warning(string|\Stringable $message, array $context = []): ConsoleLogger
     {
+        return $this;
     }
 
     /**
@@ -238,10 +253,11 @@ class ConsoleLogger implements LoggerInterface
      * @param string|\Stringable $message
      * @param mixed[] $context
      *
-     * @return void
+     * @return ConsoleLogger
      */
-    public function notice(string|\Stringable $message, array $context = []): void
+    public function notice(string|\Stringable $message, array $context = []): ConsoleLogger
     {
+        return $this;
     }
 
     /**
@@ -252,10 +268,11 @@ class ConsoleLogger implements LoggerInterface
      * @param string|\Stringable $message
      * @param mixed[] $context
      *
-     * @return void
+     * @return ConsoleLogger
      */
-    public function info(string|\Stringable $message, array $context = []): void
+    public function info(string|\Stringable $message, array $context = []): ConsoleLogger
     {
+        return $this;
     }
 
     /**
@@ -264,10 +281,11 @@ class ConsoleLogger implements LoggerInterface
      * @param string|\Stringable $message
      * @param mixed[] $context
      *
-     * @return void
+     * @return ConsoleLogger
      */
-    public function debug(string|\Stringable $message, array $context = []): void
+    public function debug(string|\Stringable $message, array $context = []): ConsoleLogger
     {
+        return $this;
     }
 
     /**
@@ -277,11 +295,10 @@ class ConsoleLogger implements LoggerInterface
      * @param string|\Stringable $message
      * @param mixed[] $context
      *
-     * @return void
-     *
-     * @throws \Psr\Log\InvalidArgumentException
+     * @return ConsoleLogger
      */
-    public function log($level, string|\Stringable $message, array $context = []): void
+    public function log($level, string|\Stringable $message, array $context = []): ConsoleLogger
     {
+        return $this;
     }
 }
