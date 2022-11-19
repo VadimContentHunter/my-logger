@@ -30,49 +30,49 @@ class ConsoleLoggerTest extends TestCase
 
     public function test_alert_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $this->fakeFormatter->setStatusLog(LogLevel::EMERGENCY);
+        $this->fakeFormatter->setStatusLog(LogLevel::ALERT);
         $this->expectOutputString($this->fakeFormatter->generateMessageLog());
         $this->fakeConsoleLogger->alert($this->fakeFormatter->getMessageLog());
     }
 
     public function test_critical_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $this->fakeFormatter->setStatusLog(LogLevel::EMERGENCY);
+        $this->fakeFormatter->setStatusLog(LogLevel::CRITICAL);
         $this->expectOutputString($this->fakeFormatter->generateMessageLog());
         $this->fakeConsoleLogger->critical($this->fakeFormatter->getMessageLog());
     }
 
     public function test_error_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $this->fakeFormatter->setStatusLog(LogLevel::EMERGENCY);
+        $this->fakeFormatter->setStatusLog(LogLevel::ERROR);
         $this->expectOutputString($this->fakeFormatter->generateMessageLog());
         $this->fakeConsoleLogger->error($this->fakeFormatter->getMessageLog());
     }
 
     public function test_warning_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $this->fakeFormatter->setStatusLog(LogLevel::EMERGENCY);
+        $this->fakeFormatter->setStatusLog(LogLevel::WARNING);
         $this->expectOutputString($this->fakeFormatter->generateMessageLog());
         $this->fakeConsoleLogger->warning($this->fakeFormatter->getMessageLog());
     }
 
     public function test_notice_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $this->fakeFormatter->setStatusLog(LogLevel::EMERGENCY);
+        $this->fakeFormatter->setStatusLog(LogLevel::NOTICE);
         $this->expectOutputString($this->fakeFormatter->generateMessageLog());
         $this->fakeConsoleLogger->notice($this->fakeFormatter->getMessageLog());
     }
 
     public function test_info_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $this->fakeFormatter->setStatusLog(LogLevel::EMERGENCY);
+        $this->fakeFormatter->setStatusLog(LogLevel::INFO);
         $this->expectOutputString($this->fakeFormatter->generateMessageLog());
         $this->fakeConsoleLogger->info($this->fakeFormatter->getMessageLog());
     }
 
     public function test_debug_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $this->fakeFormatter->setStatusLog(LogLevel::EMERGENCY);
+        $this->fakeFormatter->setStatusLog(LogLevel::DEBUG);
         $this->expectOutputString($this->fakeFormatter->generateMessageLog());
         $this->fakeConsoleLogger->debug($this->fakeFormatter->getMessageLog());
     }
