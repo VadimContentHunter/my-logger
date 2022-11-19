@@ -64,6 +64,16 @@ class ConsoleLogger implements LoggerInterface
     }
 
     /**
+     * Возвращает true, если Сохранение всех логов ВКЛЮЧЕНО иначе false
+     *
+     * @return bool
+     */
+    public function getStatusSavetoLogList(): bool
+    {
+        return false;
+    }
+
+    /**
      * Выводит сообщение лога по его идентификатор из списка сохраненных логов. (listLogs[id])
      *
      * Параметр "saveToLogList" должен быть true
