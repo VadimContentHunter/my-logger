@@ -14,7 +14,7 @@ namespace vadimcontenthunter\MyLogger\exceptions;
 class NoFormatterException extends MyLoggerException
 {
     /**
-     * Initializes the MyLoggerException
+     * Initializes the NoFormatterException
      */
     public function __construct()
     {
