@@ -11,9 +11,49 @@ class FakeFormatter implements Formatter
 {
     protected string $logLevel;
 
+    protected string $message;
+
+    protected string $index;
+
+    protected string $dateTime;
+
+    /**
+     * @param string $_logLevel
+     * @return FakeFormatter
+     */
     public function setStatusLog(string $_logLevel): FakeFormatter
     {
         $this->logLevel = $_logLevel;
+        return $this;
+    }
+
+    /**
+     * @param string $_message
+     * @return FakeFormatter
+     */
+    public function setMessageLog(string $_message = 'This is just a test message.'): FakeFormatter
+    {
+        $this->message = $_message;
+        return $this;
+    }
+
+    /**
+     * @param string $_index
+     * @return FakeFormatter
+     */
+    public function setIndexLog(string $_index = '00001'): FakeFormatter
+    {
+        $this->index = $_index;
+        return $this;
+    }
+
+    /**
+     * @param string $_index
+     * @return FakeFormatter
+     */
+    public function setDateTime(string $_dateTime = '2001-03-10 17:16:18'): FakeFormatter
+    {
+        $this->dateTime = $_dateTime;
         return $this;
     }
 
@@ -24,7 +64,7 @@ class FakeFormatter implements Formatter
      */
     public function getMessageLog(): string
     {
-        return 'This is just a test message.';
+        return $this->message;
     }
 
     /**
@@ -34,7 +74,7 @@ class FakeFormatter implements Formatter
      */
     public function getIndexLog(): string
     {
-        return '00001';
+        return $this->index;
     }
 
     /**
@@ -54,7 +94,7 @@ class FakeFormatter implements Formatter
      */
     public function getDataTime(): string
     {
-        return '2001-03-10 17:16:18';
+        return $this->dateTime;
     }
 
     /**
