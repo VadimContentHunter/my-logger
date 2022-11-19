@@ -14,7 +14,7 @@ namespace vadimcontenthunter\MyLogger\exceptions;
 class NoLoggerException extends MyLoggerException
 {
     /**
-     * Initializes the MyLoggerException
+     * Initializes the NoLoggerException
      */
     public function __construct()
     {
