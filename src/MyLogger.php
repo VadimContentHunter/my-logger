@@ -22,6 +22,9 @@ use vadimcontenthunter\MyLogger\exceptions\NoLoggerException;
  */
 class MyLogger implements LoggerInterface
 {
+    /**
+     * @var array<LoggerInterface>
+     */
     protected array $loggers;
 
     /**
@@ -54,6 +57,18 @@ class MyLogger implements LoggerInterface
                 throw new NoLoggerException();
             }
         }
+    }
+
+    /**
+     * Выполняет пользовательскую функцию которая в качестве аргумента принимает список с логгерами.
+     * Вид пользовательской функции: func(array[LoggerInterface] loggers)
+     *
+     * @param callable $callBackFun func(array[LoggerInterface] loggers)
+     *
+     * @return void
+     */
+    public function execute(callable $callBackFun): void
+    {
     }
 
     /**
