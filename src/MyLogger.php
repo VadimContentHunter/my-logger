@@ -22,7 +22,7 @@ use vadimcontenthunter\MyLogger\exceptions\NoLoggerException;
  */
 class MyLogger implements LoggerInterface
 {
-    private array $loggers;
+    protected array $loggers;
 
     /**
      * Initializes the MyLogger
@@ -47,7 +47,7 @@ class MyLogger implements LoggerInterface
      * @throws NoLoggerException
      * @return void
      */
-    private function checkLoggers(): void
+    protected function checkLoggers(): void
     {
         foreach ($this->loggers as $logger) {
             if (!($logger instanceof LoggerInterface)) {
