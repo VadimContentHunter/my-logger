@@ -23,6 +23,8 @@ use vadimcontenthunter\MyLogger\exceptions\NoLoggerException;
 class MyLogger implements LoggerInterface
 {
     /**
+     * Массив хранящий список логгеров
+     *
      * @var array<LoggerInterface>
      */
     protected array $loggers;
