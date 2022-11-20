@@ -60,8 +60,8 @@ class BaseFormatter implements Formatter
      * @param array $_indexes   Существующие индексы. Нужны для генерации индекса не похожего на один из этого списка.
      */
     public function __construct(
-        string $_statusLog,
-        \Stringable|string $_message,
+        string $_statusLog = '',
+        \Stringable|string $_message = '',
         array $_context = [],
         array $_indexes = []
     ) {
