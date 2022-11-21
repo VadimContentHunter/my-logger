@@ -10,7 +10,7 @@ use vadimcontenthunter\MyLogger\MyLogger;
 class MyLoggerFake extends MyLogger
 {
     /**
-     * Тестовый метод для вывода защищенного списка данных логгеров
+     * Поддельный тестовый метод для вывода защищенного списка данных логгеров
      *
      * @return array
      */
@@ -20,9 +20,10 @@ class MyLoggerFake extends MyLogger
     }
 
     /**
-     * Тестовый метод добавляющий в защищенный список данные логгеров
+     *  Поддельный тестовый метод, добавляющий в защищенный список логгеров, данные
      *
      * @param array|LoggerInterface $_loggers
+     *
      * @return MyLoggerFake
      */
     public function fakeAddToListLoggers(array|LoggerInterface $_loggers): MyLoggerFake
