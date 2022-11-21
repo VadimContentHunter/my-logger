@@ -32,4 +32,16 @@ class MyLoggerFake extends MyLogger
         $this->loggers += $arrLoggers;
         return $this;
     }
+
+    /**
+     * Поддельный тестовый метод для вывода защищенного метода родителя
+     *
+     * @return MyLoggerFake
+     */
+    public function fakeCheckLoggers(): MyLoggerFake
+    {
+        $this->checkLoggers();
+
+        return $this;
+    }
 }

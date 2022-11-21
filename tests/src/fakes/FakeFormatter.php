@@ -31,7 +31,7 @@ class FakeFormatter implements Formatter
      * @param string $_message
      * @return FakeFormatter
      */
-    public function setMessageLog(string $_message = 'This is just a test message.'): FakeFormatter
+    public function setMessageLog(\Stringable|string $_message = 'This is just a test message.', array $context = []): FakeFormatter
     {
         $this->message = $_message;
         return $this;

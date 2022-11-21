@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace  vadimcontenthunter\MyLogger\Tests\src\fakes;
 
 use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
 
 class ModuleEchoFake implements LoggerInterface
@@ -15,7 +16,7 @@ class ModuleEchoFake implements LoggerInterface
 
     public function specialMethod(string $param): ModuleEchoFake
     {
-        echo 'This is a special method!';
+        echo 'This is a special method! $param: ' . $param;
         return $this;
     }
 
@@ -29,16 +30,16 @@ class ModuleEchoFake implements LoggerInterface
      *
      * @throws \Psr\Log\InvalidArgumentException
      */
-    public function emergency(string|\Stringable $message, array $context = []): ModuleEchoFake
+    public function emergency(string|\Stringable $message, array $context = []): void
     {
         $formatter = new $this->formatterClass();
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::EMERGENCY);
+            echo $formatter->generateMessageLog();
         } else {
             throw new \Psr\Log\InvalidArgumentException("Error formatter does not conform to Formatter interface");
         }
-
-        return $this;
     }
 
     /**
@@ -51,10 +52,19 @@ class ModuleEchoFake implements LoggerInterface
      * @param mixed[] $context
      *
      * @return ModuleEchoFake
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
-    public function alert(string|\Stringable $message, array $context = []): ModuleEchoFake
+    public function alert(string|\Stringable $message, array $context = []): void
     {
-        return $this;
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::ALERT);
+            echo $formatter->generateMessageLog();
+        } else {
+            throw new \Psr\Log\InvalidArgumentException("Error formatter does not conform to Formatter interface");
+        }
     }
 
     /**
@@ -66,10 +76,19 @@ class ModuleEchoFake implements LoggerInterface
      * @param mixed[] $context
      *
      * @return ModuleEchoFake
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
-    public function critical(string|\Stringable $message, array $context = []): ModuleEchoFake
+    public function critical(string|\Stringable $message, array $context = []): void
     {
-        return $this;
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::CRITICAL);
+            echo $formatter->generateMessageLog();
+        } else {
+            throw new \Psr\Log\InvalidArgumentException("Error formatter does not conform to Formatter interface");
+        }
     }
 
     /**
@@ -80,10 +99,19 @@ class ModuleEchoFake implements LoggerInterface
      * @param mixed[] $context
      *
      * @return ModuleEchoFake
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
-    public function error(string|\Stringable $message, array $context = []): ModuleEchoFake
+    public function error(string|\Stringable $message, array $context = []): void
     {
-        return $this;
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::ERROR);
+            echo $formatter->generateMessageLog();
+        } else {
+            throw new \Psr\Log\InvalidArgumentException("Error formatter does not conform to Formatter interface");
+        }
     }
 
     /**
@@ -96,10 +124,19 @@ class ModuleEchoFake implements LoggerInterface
      * @param mixed[] $context
      *
      * @return ModuleEchoFake
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
-    public function warning(string|\Stringable $message, array $context = []): ModuleEchoFake
+    public function warning(string|\Stringable $message, array $context = []): void
     {
-        return $this;
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::WARNING);
+            echo $formatter->generateMessageLog();
+        } else {
+            throw new \Psr\Log\InvalidArgumentException("Error formatter does not conform to Formatter interface");
+        }
     }
 
     /**
@@ -109,10 +146,19 @@ class ModuleEchoFake implements LoggerInterface
      * @param mixed[] $context
      *
      * @return ModuleEchoFake
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
-    public function notice(string|\Stringable $message, array $context = []): ModuleEchoFake
+    public function notice(string|\Stringable $message, array $context = []): void
     {
-        return $this;
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::NOTICE);
+            echo $formatter->generateMessageLog();
+        } else {
+            throw new \Psr\Log\InvalidArgumentException("Error formatter does not conform to Formatter interface");
+        }
     }
 
     /**
@@ -124,10 +170,19 @@ class ModuleEchoFake implements LoggerInterface
      * @param mixed[] $context
      *
      * @return ModuleEchoFake
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
-    public function info(string|\Stringable $message, array $context = []): ModuleEchoFake
+    public function info(string|\Stringable $message, array $context = []): void
     {
-        return $this;
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::INFO);
+            echo $formatter->generateMessageLog();
+        } else {
+            throw new \Psr\Log\InvalidArgumentException("Error formatter does not conform to Formatter interface");
+        }
     }
 
     /**
@@ -137,10 +192,19 @@ class ModuleEchoFake implements LoggerInterface
      * @param mixed[] $context
      *
      * @return ModuleEchoFake
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
-    public function debug(string|\Stringable $message, array $context = []): ModuleEchoFake
+    public function debug(string|\Stringable $message, array $context = []): void
     {
-        return $this;
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::DEBUG);
+            echo $formatter->generateMessageLog();
+        } else {
+            throw new \Psr\Log\InvalidArgumentException("Error formatter does not conform to Formatter interface");
+        }
     }
 
     /**
@@ -154,8 +218,15 @@ class ModuleEchoFake implements LoggerInterface
      *
      * @throws \Psr\Log\InvalidArgumentException
      */
-    public function log($level, string|\Stringable $message, array $context = []): ModuleEchoFake
+    public function log($level, string|\Stringable $message, array $context = []): void
     {
-        return $this;
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog($level);
+            echo $formatter->generateMessageLog();
+        } else {
+            throw new \Psr\Log\InvalidArgumentException("Error formatter does not conform to Formatter interface");
+        }
     }
 }
