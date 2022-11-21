@@ -23,6 +23,8 @@ use vadimcontenthunter\MyLogger\exceptions\NoLoggerException;
 class MyLogger implements LoggerInterface
 {
     /**
+     * Массив хранящий список логгеров
+     *
      * @var array<LoggerInterface>
      */
     protected array $loggers;
@@ -186,7 +188,7 @@ class MyLogger implements LoggerInterface
      *
      * @throws \Psr\Log\InvalidArgumentException
      */
-    public function log(LogLevel $level, string|Stringable $message, array $context = []): void
+    public function log($level, string|Stringable $message, array $context = []): void
     {
     }
 }

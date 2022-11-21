@@ -14,6 +14,25 @@ namespace vadimcontenthunter\MyLogger\interfaces;
 interface Formatter
 {
     /**
+     * Устанавливает статус для лога
+     *
+     * @param string $statusLog Статус для лога
+     *
+     * @return mixed
+     */
+    public function setStatusLog(string $statusLog): mixed;
+
+    /**
+     * Метод устанавливает значение для сообщения
+     *
+     * @param \Stringable|string $message
+     * @param array $context
+     *
+     * @return mixed
+     */
+    public function setMessageLog(\Stringable|string $message, array $context = array()): mixed;
+
+    /**
      * Метод возвращает отформатированное сообщение
      *
      * @return string
