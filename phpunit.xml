@@ -6,10 +6,8 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="Tests for logger basics">
-      <directory suffix="Test.php" phpVersion="8.1.1">./tests/</directory>
-      <exclude>./tests/modulesTests/</exclude>
-      <exclude>./tests/formattersTests/</exclude>
+    <testsuite name="Tests for logger Main">
+      <directory suffix="Test.php" phpVersion="8.1.1">./tests/mainTests</directory>
     </testsuite>
     <testsuite name="Tests for logger modules">
       <directory suffix="Test.php" phpVersion="8.1.1">./tests/modulesTests/</directory>
