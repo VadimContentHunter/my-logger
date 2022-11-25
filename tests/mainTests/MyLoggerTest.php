@@ -26,56 +26,56 @@ class MyLoggerTest extends TestCase
 
     public function test_emergency_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = 'Calling the emergency method!';
-        $this->expectOutputString($message);
+        $message = '~^.*Calling the emergency method!.*$~u';
+        $this->expectOutputRegex($message);
         $this->myLoggerFake->emergency($message, []);
     }
 
     public function test_alert_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = 'Calling the alert method!';
+        $message = '~^.*Calling the alert method!.*$~u';
         $this->expectOutputString($message);
         $this->myLoggerFake->alert($message, []);
     }
 
     public function test_critical_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = 'Calling the critical method!';
+        $message = '~^.*Calling the critical method!.*$~u';
         $this->expectOutputString($message);
         $this->myLoggerFake->critical($message, []);
     }
 
     public function test_error_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = 'Calling the error method!';
+        $message = '~^.*Calling the error method!.*$~u';
         $this->expectOutputString($message);
         $this->myLoggerFake->error($message, []);
     }
 
     public function test_warning_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = 'Calling the warning method!';
+        $message = '~^.*Calling the warning method!.*$~u';
         $this->expectOutputString($message);
         $this->myLoggerFake->warning($message, []);
     }
 
     public function test_notice_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = 'Calling the notice method!';
+        $message = '~^.*Calling the notice method!.*$~u';
         $this->expectOutputString($message);
         $this->myLoggerFake->notice($message, []);
     }
 
     public function test_info_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = 'Calling the info method!';
+        $message = '~^.*Calling the info method!.*$~u';
         $this->expectOutputString($message);
         $this->myLoggerFake->info($message, []);
     }
 
     public function test_debug_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = 'Calling the debug method!';
+        $message = '~^.*Calling the debug method!.*$~u';
         $this->expectOutputString($message);
         $this->myLoggerFake->debug($message, []);
     }
