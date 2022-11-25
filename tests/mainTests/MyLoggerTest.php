@@ -26,57 +26,65 @@ class MyLoggerTest extends TestCase
 
     public function test_emergency_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = '~^.*Calling the emergency method!.*$~u';
+        $message = 'Calling the emergency method';
+        $regex = '~^.*Calling the emergency method!.*$~u';
         $this->expectOutputRegex($message);
         $this->myLoggerFake->emergency($message, []);
     }
 
     public function test_alert_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = '~^.*Calling the alert method!.*$~u';
-        $this->expectOutputString($message);
+        $message = 'Calling the alert method!';
+        $regex = '~^.*Calling the alert method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->alert($message, []);
     }
 
     public function test_critical_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = '~^.*Calling the critical method!.*$~u';
-        $this->expectOutputString($message);
+        $message = 'Calling the critical method!';
+        $regex = '~^.*Calling the critical method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->critical($message, []);
     }
 
     public function test_error_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = '~^.*Calling the error method!.*$~u';
-        $this->expectOutputString($message);
+        $message = 'Calling the error method!';
+        $regex = '~^.*Calling the error method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->error($message, []);
     }
 
     public function test_warning_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = '~^.*Calling the warning method!.*$~u';
-        $this->expectOutputString($message);
+        $message = 'Calling the warning method!';
+        $regex = '~^.*Calling the warning method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->warning($message, []);
     }
 
     public function test_notice_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = '~^.*Calling the notice method!.*$~u';
-        $this->expectOutputString($message);
+        $message = 'Calling the notice method!';
+        $regex = '~^.*Calling the notice method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->notice($message, []);
     }
 
     public function test_info_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = '~^.*Calling the info method!.*$~u';
-        $this->expectOutputString($message);
+        $message = 'Calling the info method!';
+        $regex = '~^.*Calling the info method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->info($message, []);
     }
 
     public function test_debug_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = '~^.*Calling the debug method!.*$~u';
-        $this->expectOutputString($message);
+        $message = 'Calling the debug method!';
+        $regex = '~^.*Calling the debug method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->debug($message, []);
     }
 
