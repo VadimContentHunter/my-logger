@@ -17,6 +17,13 @@ class FakeFormatter implements Formatter
 
     protected string $dateTime;
 
+    public function __construct()
+    {
+        $this->setIndexLog();
+        $this->setDateTime();
+        $this->setMessageLog();
+    }
+
     /**
      * @param string $_logLevel
      * @return FakeFormatter
