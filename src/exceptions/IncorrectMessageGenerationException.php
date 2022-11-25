@@ -15,6 +15,8 @@ class IncorrectMessageGenerationException extends MyLoggerException
 {
     /**
      * Initializes the IncorrectMessageGenerationException
+     *
+     * @param mixed $_message
      */
     public function __construct($_message = 'Incorrect message generation')
     {
