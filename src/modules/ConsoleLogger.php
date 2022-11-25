@@ -8,6 +8,7 @@ use Psr\Log\LoggerInterface;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
 use vadimcontenthunter\MyLogger\exceptions\NoFormatterException;
 use vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException;
+use vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException;
 
 /**
  * Логгер фиксирует события в консоль
@@ -61,7 +62,10 @@ class ConsoleLogger implements LoggerInterface
      */
     public function getFormatterClass(string $_formatterClass): string
     {
-        return '';
+        if (is_subclass_of($_formatterClass, Formatter::class)) {
+            return $_formatterClass;
+        }
+        return throw new NoFormatterException();
     }
 
     /**
@@ -170,6 +174,14 @@ class ConsoleLogger implements LoggerInterface
      */
     protected function addLogMessageInListLogs(Formatter|array $formatter): ConsoleLogger
     {
+        $formatters = is_array($formatter) ? $formatter : [$formatter];
+        array_map(function (Formatter $_formatter) {
+            if (is_subclass_of($_formatter, $this->formatterClass)) {
+                $this->listLogs[] = $_formatter;
+            } else {
+                throw new InvalidArgumentException('The formatter class does not match the one specified in the constructor');
+            }
+        }, $formatters);
         return $this;
     }
 
@@ -180,9 +192,24 @@ class ConsoleLogger implements LoggerInterface
      * @param mixed[] $context
      *
      * @return void
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws \vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException
      */
     public function emergency(string|\Stringable $message, array $context = []): void
     {
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $generatedMessage = $formatter->generateMessageLog();
+            if ($formatter->checkGenerateMessage($generatedMessage)) {
+                echo $generatedMessage;
+                return;
+            }
+
+            throw new IncorrectMessageGenerationException("Incorrect message generation in emergency method");
+        }
+
+        throw new InvalidArgumentException('Stored formatter class not inherited from Formatter class');
     }
 
     /**
