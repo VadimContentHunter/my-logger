@@ -76,7 +76,7 @@ class ConsoleLogger implements LoggerInterface
      */
     public function getStatusSavetoLogList(): bool
     {
-        return false;
+        return $this->saveToLogList;
     }
 
     /**
