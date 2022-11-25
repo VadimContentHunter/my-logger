@@ -93,8 +93,9 @@ class ConsoleLogger implements LoggerInterface
      */
     public function getLogMessageFromListLogsById(int $id): string
     {
-        if ($this->listLogs[$id] instanceof Formatter) {
-            return $this->listLogs[$id]->generateMessageLog();
+        $formatter = $this->listLogs[$id];
+        if ($formatter instanceof Formatter) {
+            return $formatter->generateMessageLog();
         }
 
         return throw new NoFormatterException();
