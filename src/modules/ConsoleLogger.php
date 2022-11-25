@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace vadimcontenthunter\MyLogger\modules;
 
 use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
 use vadimcontenthunter\MyLogger\exceptions\NoFormatterException;
 use vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException;
@@ -200,6 +201,13 @@ class ConsoleLogger implements LoggerInterface
     {
         $formatter = new $this->formatterClass();
         if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::EMERGENCY);
+
+            if($this->saveToLogList){
+                $this->addLogMessageInListLogs($formatter);
+            }
+
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
                 echo $generatedMessage;
