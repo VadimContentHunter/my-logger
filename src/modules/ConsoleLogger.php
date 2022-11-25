@@ -177,7 +177,7 @@ class ConsoleLogger implements LoggerInterface
     {
         $formatters = is_array($formatter) ? $formatter : [$formatter];
         array_map(function (Formatter $_formatter) {
-            if (is_subclass_of($_formatter, $this->formatterClass)) {
+            if (is_a($_formatter, $this->formatterClass)) {
                 $this->listLogs[] = $_formatter;
             } else {
                 throw new InvalidArgumentException('The formatter class does not match the one specified in the constructor');
