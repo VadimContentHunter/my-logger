@@ -26,9 +26,9 @@ class MyLoggerTest extends TestCase
 
     public function test_emergency_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
-        $message = 'Calling the emergency method';
+        $message = 'Calling the emergency method!';
         $regex = '~^.*Calling the emergency method!.*$~u';
-        $this->expectOutputRegex($message);
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->emergency($message, []);
     }
 
