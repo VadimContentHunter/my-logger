@@ -66,6 +66,7 @@ class ConsoleLogger implements LoggerInterface
         if (is_subclass_of($_formatterClass, Formatter::class)) {
             return $_formatterClass;
         }
+
         return throw new NoFormatterException();
     }
 
@@ -87,10 +88,16 @@ class ConsoleLogger implements LoggerInterface
      * @param int $id Уникальный идентификатор лога
      *
      * @return string
+     *
+     * @throws NoFormatterException
      */
     public function getLogMessageFromListLogsById(int $id): string
     {
-        return '';
+        if ($this->listLogs[$id] instanceof Formatter) {
+            return $this->listLogs[$id]->generateMessageLog();
+        }
+
+        return throw new NoFormatterException();
     }
 
     /**
