@@ -126,7 +126,7 @@ class FakeFormatter implements Formatter
     {
         if (
             preg_match(
-                '~^(?<index>\[\d{5}\])\s(?<date_time>\[\d{4,}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}\])\s(?<log_level>\[\w*\])\s(?<message>.*)$~iu',
+                '~^\[(?<index>\d{5})\]\s\[(?<date_time>\d{4,}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2})\]\s\[(?<log_level>\w*)\]\s(?<message>.*)$~iu',
                 $message,
                 $matches
             )
