@@ -204,7 +204,7 @@ class ConsoleLogger implements LoggerInterface
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog(LogLevel::EMERGENCY);
 
-            if($this->saveToLogList){
+            if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
             }
 
@@ -230,9 +230,31 @@ class ConsoleLogger implements LoggerInterface
      * @param mixed[] $context
      *
      * @return void
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws \vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException
      */
     public function alert(string|\Stringable $message, array $context = []): void
     {
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::ALERT);
+
+            if ($this->saveToLogList) {
+                $this->addLogMessageInListLogs($formatter);
+            }
+
+            $generatedMessage = $formatter->generateMessageLog();
+            if ($formatter->checkGenerateMessage($generatedMessage)) {
+                echo $generatedMessage;
+                return;
+            }
+
+            throw new IncorrectMessageGenerationException("Incorrect message generation in alert method");
+        }
+
+        throw new InvalidArgumentException('Stored formatter class not inherited from Formatter class');
     }
 
     /**
@@ -244,9 +266,31 @@ class ConsoleLogger implements LoggerInterface
      * @param mixed[] $context
      *
      * @return void
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws \vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException
      */
     public function critical(string|\Stringable $message, array $context = []): void
     {
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::CRITICAL);
+
+            if ($this->saveToLogList) {
+                $this->addLogMessageInListLogs($formatter);
+            }
+
+            $generatedMessage = $formatter->generateMessageLog();
+            if ($formatter->checkGenerateMessage($generatedMessage)) {
+                echo $generatedMessage;
+                return;
+            }
+
+            throw new IncorrectMessageGenerationException("Incorrect message generation in alert method");
+        }
+
+        throw new InvalidArgumentException('Stored formatter class not inherited from Formatter class');
     }
 
     /**
@@ -257,9 +301,31 @@ class ConsoleLogger implements LoggerInterface
      * @param mixed[] $context
      *
      * @return void
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws \vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException
      */
     public function error(string|\Stringable $message, array $context = []): void
     {
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::ERROR);
+
+            if ($this->saveToLogList) {
+                $this->addLogMessageInListLogs($formatter);
+            }
+
+            $generatedMessage = $formatter->generateMessageLog();
+            if ($formatter->checkGenerateMessage($generatedMessage)) {
+                echo $generatedMessage;
+                return;
+            }
+
+            throw new IncorrectMessageGenerationException("Incorrect message generation in error method");
+        }
+
+        throw new InvalidArgumentException('Stored formatter class not inherited from Formatter class');
     }
 
     /**
@@ -272,9 +338,31 @@ class ConsoleLogger implements LoggerInterface
      * @param mixed[] $context
      *
      * @return void
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws \vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException
      */
     public function warning(string|\Stringable $message, array $context = []): void
     {
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::WARNING);
+
+            if ($this->saveToLogList) {
+                $this->addLogMessageInListLogs($formatter);
+            }
+
+            $generatedMessage = $formatter->generateMessageLog();
+            if ($formatter->checkGenerateMessage($generatedMessage)) {
+                echo $generatedMessage;
+                return;
+            }
+
+            throw new IncorrectMessageGenerationException("Incorrect message generation in warning method");
+        }
+
+        throw new InvalidArgumentException('Stored formatter class not inherited from Formatter class');
     }
 
     /**
@@ -284,9 +372,31 @@ class ConsoleLogger implements LoggerInterface
      * @param mixed[] $context
      *
      * @return void
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws \vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException
      */
     public function notice(string|\Stringable $message, array $context = []): void
     {
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::NOTICE);
+
+            if ($this->saveToLogList) {
+                $this->addLogMessageInListLogs($formatter);
+            }
+
+            $generatedMessage = $formatter->generateMessageLog();
+            if ($formatter->checkGenerateMessage($generatedMessage)) {
+                echo $generatedMessage;
+                return;
+            }
+
+            throw new IncorrectMessageGenerationException("Incorrect message generation in notice method");
+        }
+
+        throw new InvalidArgumentException('Stored formatter class not inherited from Formatter class');
     }
 
     /**
@@ -298,9 +408,31 @@ class ConsoleLogger implements LoggerInterface
      * @param mixed[] $context
      *
      * @return void
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws \vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException
      */
     public function info(string|\Stringable $message, array $context = []): void
     {
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::INFO);
+
+            if ($this->saveToLogList) {
+                $this->addLogMessageInListLogs($formatter);
+            }
+
+            $generatedMessage = $formatter->generateMessageLog();
+            if ($formatter->checkGenerateMessage($generatedMessage)) {
+                echo $generatedMessage;
+                return;
+            }
+
+            throw new IncorrectMessageGenerationException("Incorrect message generation in info method");
+        }
+
+        throw new InvalidArgumentException('Stored formatter class not inherited from Formatter class');
     }
 
     /**
@@ -310,9 +442,31 @@ class ConsoleLogger implements LoggerInterface
      * @param mixed[] $context
      *
      * @return void
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws \vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException
      */
     public function debug(string|\Stringable $message, array $context = []): void
     {
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog(LogLevel::DEBUG);
+
+            if ($this->saveToLogList) {
+                $this->addLogMessageInListLogs($formatter);
+            }
+
+            $generatedMessage = $formatter->generateMessageLog();
+            if ($formatter->checkGenerateMessage($generatedMessage)) {
+                echo $generatedMessage;
+                return;
+            }
+
+            throw new IncorrectMessageGenerationException("Incorrect message generation in debug method");
+        }
+
+        throw new InvalidArgumentException('Stored formatter class not inherited from Formatter class');
     }
 
     /**
@@ -323,8 +477,30 @@ class ConsoleLogger implements LoggerInterface
      * @param mixed[] $context
      *
      * @return void
+     *
+     * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws \vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException
      */
     public function log($level, string|\Stringable $message, array $context = []): void
     {
+        $formatter = new $this->formatterClass();
+        if ($formatter instanceof Formatter) {
+            $formatter->setMessageLog($message, $context);
+            $formatter->setStatusLog($level);
+
+            if ($this->saveToLogList) {
+                $this->addLogMessageInListLogs($formatter);
+            }
+
+            $generatedMessage = $formatter->generateMessageLog();
+            if ($formatter->checkGenerateMessage($generatedMessage)) {
+                echo $generatedMessage;
+                return;
+            }
+
+            throw new IncorrectMessageGenerationException("Incorrect message generation in log method");
+        }
+
+        throw new InvalidArgumentException('Stored formatter class not inherited from Formatter class');
     }
 }
