@@ -87,8 +87,9 @@ class MyLoggerTest extends TestCase
         $this->myLoggerFake->execute(function ($logger) use ($param) {
             if ($logger instanceof ModuleEchoFake) {
                 $logger->specialMethod($param);
+            } else {
+                throw new \Exception("Error logger does not conform to ModuleEchoFake interface");
             }
-            throw new \Exception("Error logger does not conform to ModuleEchoFake interface");
         });
     }
 
