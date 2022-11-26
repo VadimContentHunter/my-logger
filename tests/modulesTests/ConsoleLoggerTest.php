@@ -86,16 +86,12 @@ class ConsoleLoggerTest extends TestCase
     public function test_addLogMessageInListLogs_withParameterFormatter_shouldAddToTheList(
         Formatter|array $formatter
     ): void {
-        $this->expectException(\vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException::class);
+        // $this->expectException(\vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException::class);
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($formatter);
 
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
         $intersect = array_intersect($arrFormatters, $this->fakeConsoleLogger->getListLogsFake());
-        if (count($arrFormatters) === count($intersect)) {
-            $this->assertTrue(true);
-        }
-
-        $this->assertTrue(false);
+        $this->assertEquals(count($arrFormatters), count($intersect));
     }
 
     /**
@@ -114,10 +110,7 @@ class ConsoleLoggerTest extends TestCase
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
             $resLog = $this->fakeConsoleLogger->getLogMessageFromListLogsById($id);
             if ($arrFormatters[$id] instanceof Formatter) {
-                if (strcmp($arrFormatters[$id]->generateMessageLog(), $resLog) === 0) {
-                    $this->assertTrue(true);
-                    return;
-                }
+                $this->assertEquals(strcmp($arrFormatters[$id]->generateMessageLog(), $resLog), 0);
             }
         }
         $this->assertTrue(false);
@@ -139,10 +132,7 @@ class ConsoleLoggerTest extends TestCase
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
             $resLog = $this->fakeConsoleLogger->getLogMessageFromListLogsByIndex($index);
-            if (array_search($resLog, $arrFormatters)) {
-                $this->assertTrue(true);
-                return;
-            }
+            $this->assertNotEquals(array_search($resLog, $arrFormatters), false);
         }
         $this->assertTrue(false);
     }
@@ -163,11 +153,9 @@ class ConsoleLoggerTest extends TestCase
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
             $resLogs = $this->fakeConsoleLogger->getLogMessageFromListLogsByStatusLog($logLevel);
-            if (count(array_diff($resLogs, $arrFormatters)) === 0) {
-                $this->assertTrue(true);
-                return;
-            }
+            $this->assertEquals(count(array_diff($resLogs, $arrFormatters)), 0);
         }
+
         $this->assertTrue(false);
     }
 
@@ -192,11 +180,9 @@ class ConsoleLoggerTest extends TestCase
                 $fromDataTime,
                 $toDataTime
             );
-            if (count(array_diff($resLogs, $arrFormatters)) === 0) {
-                $this->assertTrue(true);
-                return;
-            }
+            $this->assertEquals(count(array_diff($resLogs, $arrFormatters)), 0);
         }
+
         $this->assertTrue(false);
     }
 
@@ -215,10 +201,7 @@ class ConsoleLoggerTest extends TestCase
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
             $resLog = $this->fakeConsoleLogger->getLogMessageFromListLogsByMessage($message);
-            if (array_search($resLog, $arrFormatters)) {
-                $this->assertTrue(true);
-                return;
-            }
+            $this->assertNotEquals(array_search($resLog, $arrFormatters), false);
         }
         $this->assertTrue(false);
     }

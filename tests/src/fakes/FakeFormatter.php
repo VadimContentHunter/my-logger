@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace  vadimcontenthunter\MyLogger\Tests\src\fakes;
 
 use Psr\Log\LogLevel;
+use Stringable;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
 
-class FakeFormatter implements Formatter
+class FakeFormatter implements Formatter, Stringable
 {
     protected string $logLevel;
 
@@ -143,5 +144,10 @@ class FakeFormatter implements Formatter
         }
 
         return false;
+    }
+
+    public function __toString(): string
+    {
+        return $this->generateMessageLog();
     }
 }
