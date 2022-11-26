@@ -24,7 +24,7 @@ class ConsoleLogger implements LoggerInterface
     /**
      * Хранит все зафиксированные логи
      *
-     * @var array <vadimcontenthunter\MyLogger\interfaces\Formatter>
+     * @var array <Formatter>
      */
     protected array $listLogs = [];
 
@@ -92,6 +92,7 @@ class ConsoleLogger implements LoggerInterface
      *
      * @throws NoFormatterException
      * @throws NotEnabledFlagException
+     * @throws IncorrectMessageGenerationException
      */
     public function getLogMessageFromListLogsById(int $id): string
     {
@@ -100,7 +101,12 @@ class ConsoleLogger implements LoggerInterface
         }
 
         if ($this->listLogs[$id] instanceof Formatter) {
-            return $this->listLogs[$id]->generateMessageLog();
+            $generatedMessage = $this->listLogs[$id]->generateMessageLog();
+            if ($this->listLogs[$id]->checkGenerateMessage($generatedMessage)) {
+                return $this->listLogs[$id]->generateMessageLog();
+            }
+
+            throw new IncorrectMessageGenerationException();
         }
 
         return throw new NoFormatterException();
@@ -116,7 +122,9 @@ class ConsoleLogger implements LoggerInterface
      * @return string
      *
      * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws NoFormatterException
      * @throws NotEnabledFlagException
+     * @throws IncorrectMessageGenerationException
      */
     public function getLogMessageFromListLogsByIndex(string $index): string
     {
@@ -124,7 +132,21 @@ class ConsoleLogger implements LoggerInterface
             return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
         }
 
-        return '';
+        foreach ($this->listLogs as $key => $log) {
+            if ($log instanceof Formatter) {
+                if (strcmp($log->getIndexLog(), $index) === 0) {
+                    $generatedMessage = $log->generateMessageLog();
+                    if ($log->checkGenerateMessage($generatedMessage)) {
+                        return $log->generateMessageLog();
+                    }
+                    throw new IncorrectMessageGenerationException();
+                }
+            } else {
+                return throw new NoFormatterException();
+            }
+        }
+
+        throw new InvalidArgumentException("Index not found");
     }
 
     /**
