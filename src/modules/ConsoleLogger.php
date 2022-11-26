@@ -6,6 +6,7 @@ namespace vadimcontenthunter\MyLogger\modules;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
+use vadimcontenthunter\MyLogger\exceptions\NotEnabledFlagException;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
 use vadimcontenthunter\MyLogger\exceptions\NoFormatterException;
 use vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException;
@@ -23,7 +24,7 @@ class ConsoleLogger implements LoggerInterface
     /**
      * Хранит все зафиксированные логи
      *
-     * @var array
+     * @var array <vadimcontenthunter\MyLogger\interfaces\Formatter>
      */
     protected array $listLogs = [];
 
@@ -90,12 +91,16 @@ class ConsoleLogger implements LoggerInterface
      * @return string
      *
      * @throws NoFormatterException
+     * @throws NotEnabledFlagException
      */
     public function getLogMessageFromListLogsById(int $id): string
     {
-        $formatter = $this->listLogs[$id];
-        if ($formatter instanceof Formatter) {
-            return $formatter->generateMessageLog();
+        if (!$this->saveToLogList) {
+            return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
+        }
+
+        if ($this->listLogs[$id] instanceof Formatter) {
+            return $this->listLogs[$id]->generateMessageLog();
         }
 
         return throw new NoFormatterException();
@@ -111,9 +116,14 @@ class ConsoleLogger implements LoggerInterface
      * @return string
      *
      * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws NotEnabledFlagException
      */
     public function getLogMessageFromListLogsByIndex(string $index): string
     {
+        if (!$this->saveToLogList) {
+            return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
+        }
+
         return '';
     }
 
@@ -127,9 +137,14 @@ class ConsoleLogger implements LoggerInterface
      * @return array<string>
      *
      * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws NotEnabledFlagException
      */
     public function getLogMessageFromListLogsByStatusLog(string $statusLog): array
     {
+        if (!$this->saveToLogList) {
+            return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
+        }
+
         return [];
     }
 
@@ -150,9 +165,14 @@ class ConsoleLogger implements LoggerInterface
       * @return array<string>
       *
       * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+      * @throws NotEnabledFlagException
       */
     public function getLogMessageFromListLogsByDataTime(string $fromDataTime, string $toDataTime): array
     {
+        if (!$this->saveToLogList) {
+            return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
+        }
+
         return [];
     }
 
@@ -164,9 +184,15 @@ class ConsoleLogger implements LoggerInterface
      * @param string $message Описание лога
      *
      * @return array<string>
+     *
+     * @throws NotEnabledFlagException
      */
     public function getLogMessageFromListLogsByMessage(string $message): array
     {
+        if (!$this->saveToLogList) {
+            return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
+        }
+
         return [];
     }
 
@@ -180,9 +206,14 @@ class ConsoleLogger implements LoggerInterface
      * @return ConsoleLogger
      *
      * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
+     * @throws NotEnabledFlagException
      */
     protected function addLogMessageInListLogs(Formatter|array $formatter): ConsoleLogger
     {
+        if (!$this->saveToLogList) {
+            return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
+        }
+
         $formatters = is_array($formatter) ? $formatter : [$formatter];
         array_map(function (Formatter $_formatter) {
             if (is_a($_formatter, $this->formatterClass)) {
