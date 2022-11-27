@@ -160,6 +160,7 @@ class ConsoleLogger implements LoggerInterface
      *
      * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
      * @throws NotEnabledFlagException
+     * @throws IncorrectMessageGenerationException
      */
     public function getLogMessageFromListLogsByStatusLog(string $statusLog): array
     {
@@ -167,7 +168,19 @@ class ConsoleLogger implements LoggerInterface
             return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
         }
 
-        return [];
+        return array_diff(array_map(
+            function (Formatter $formatterObj) use ($statusLog) {
+                if (strcmp($formatterObj->getStatusLog(), $statusLog) === 0) {
+                    $generatedMessage = $formatterObj->generateMessageLog();
+                    if ($formatterObj->checkGenerateMessage($generatedMessage)) {
+                        return $formatterObj->generateMessageLog();
+                    }
+
+                    throw new IncorrectMessageGenerationException();
+                }
+            },
+            $this->listLogs
+        ), [null]);
     }
 
      /**
