@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace vadimcontenthunter\MyLogger\Tests\modulesTests;
 
+use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use PHPUnit\Framework\TestCase;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
@@ -110,7 +111,6 @@ class ConsoleLoggerTest extends TestCase
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
             $resLog = $this->fakeConsoleLogger->getLogMessageFromListLogsById($id);
             if ($arrFormatters[$id] instanceof Formatter) {
-                $t = strcmp($arrFormatters[$id]->generateMessageLog(), $resLog);
                 $this->assertEquals(strcmp($arrFormatters[$id]->generateMessageLog(), $resLog), 0);
             }
         }
@@ -127,12 +127,16 @@ class ConsoleLoggerTest extends TestCase
         Formatter|array $formatter,
         string $index
     ): void {
-        $this->expectException(\vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException::class);
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
+
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
             $resLog = $this->fakeConsoleLogger->getLogMessageFromListLogsByIndex($index);
-            $this->assertNotEquals(array_search($resLog, $arrFormatters), false);
+            $resLogs = array_map(
+                fn (Formatter $formatterObj) => $formatterObj->generateMessageLog(),
+                $arrFormatters
+            );
+            $this->assertContains($resLog, $resLogs);
         }
     }
 
