@@ -149,14 +149,14 @@ class ConsoleLoggerTest extends TestCase
      */
     public function test_getLogMessageFromListLogsByStatusLog_withParameterStatusLogError_shouldReturnAllLogsWithStatus(
         Formatter|array $formatter,
-        string $logLevel
+        string $logLevel,
+        array $expectedLogMessages
     ): void {
-        $this->expectException(\vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException::class);
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
             $resLogs = $this->fakeConsoleLogger->getLogMessageFromListLogsByStatusLog($logLevel);
-            $this->assertEquals(count(array_diff($resLogs, $arrFormatters)), 0);
+            $this->assertEquals(array_values($expectedLogMessages), array_values($resLogs));
         }
     }
 
@@ -171,9 +171,9 @@ class ConsoleLoggerTest extends TestCase
     public function test_getLogMessageFromListLogsByDataTime_withParametersStartAndEndDateTime_shouldReturnAllLogsFromDatetimeInterval(
         Formatter|array $formatter,
         string $fromDataTime,
-        string $toDataTime
+        string $toDataTime,
+        array $expectedLogMessages
     ): void {
-        $this->expectException(\vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException::class);
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
@@ -181,7 +181,7 @@ class ConsoleLoggerTest extends TestCase
                 $fromDataTime,
                 $toDataTime
             );
-            $this->assertEquals(count(array_diff($resLogs, $arrFormatters)), 0);
+            $this->assertEquals(array_values($expectedLogMessages), array_values($resLogs));
         }
     }
 
@@ -194,13 +194,14 @@ class ConsoleLoggerTest extends TestCase
      */
     public function test_getLogMessageFromListLogsByMessage_withParameterMessage_shouldReturnAllLoggersWithThisMessage(
         Formatter|array $formatter,
-        string $message
+        string $message,
+        array $expectedLogMessages
     ): void {
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
-            $resLog = $this->fakeConsoleLogger->getLogMessageFromListLogsByMessage($message);
-            $this->assertNotEquals(array_search($resLog, $arrFormatters), false);
+            $resLogs = $this->fakeConsoleLogger->getLogMessageFromListLogsByMessage($message);
+            $this->assertEquals(array_values($expectedLogMessages), array_values($resLogs));
         }
     }
 
@@ -318,7 +319,19 @@ class ConsoleLoggerTest extends TestCase
                         ->setIndexLog('00003')
                         ->setMessageLog('This is just the third test message.'),
                 ],
-                LogLevel::ERROR
+                LogLevel::ERROR,
+                [
+                    (new FakeFormatter())
+                        ->setStatusLog(LogLevel::ERROR)
+                        ->setIndexLog('00002')
+                        ->setMessageLog('Its just a second test message.')
+                        ->generateMessageLog(),
+                    (new FakeFormatter())
+                        ->setStatusLog(LogLevel::ERROR)
+                        ->setIndexLog('00003')
+                        ->setMessageLog('This is just the third test message.')
+                        ->generateMessageLog(),
+                ],
             ],
         ];
     }
@@ -349,8 +362,22 @@ class ConsoleLoggerTest extends TestCase
                         ->setMessageLog('This is just the third test message.')
                         ->setDateTime('2001-03-12 19:10:08'),
                 ],
-                '2001-03-12 17:00:00',
+                '2001-03-12 17:10:00',
                 '2001-03-12 19:00:00',
+                [
+                    (new FakeFormatter())
+                        ->setStatusLog(LogLevel::ERROR)
+                        ->setIndexLog('00002')
+                        ->setMessageLog('Its just a second test message.')
+                        ->setDateTime('2001-03-12 17:16:18')
+                        ->generateMessageLog(),
+                    (new FakeFormatter())
+                        ->setStatusLog(LogLevel::ERROR)
+                        ->setIndexLog('00003')
+                        ->setMessageLog('Its just a 4 test message.')
+                        ->setDateTime('2001-03-12 18:30:18')
+                        ->generateMessageLog(),
+                ]
             ],
         ];
     }
@@ -372,8 +399,22 @@ class ConsoleLoggerTest extends TestCase
                         ->setStatusLog(LogLevel::ERROR)
                         ->setIndexLog('00003')
                         ->setMessageLog('This is just the third test message.'),
+                    (new FakeFormatter())
+                        ->setStatusLog(LogLevel::INFO)
+                        ->setIndexLog('00004')
+                        ->setMessageLog('Its just a second test message.'),
                 ],
-                'Its just a second test message.'
+                'Its just a second test message.',
+                [
+                    (new FakeFormatter())
+                        ->setStatusLog(LogLevel::ERROR)
+                        ->setIndexLog('00002')
+                        ->setMessageLog('Its just a second test message.'),
+                    (new FakeFormatter())
+                        ->setStatusLog(LogLevel::INFO)
+                        ->setIndexLog('00004')
+                        ->setMessageLog('Its just a second test message.'),
+                ]
             ],
         ];
     }
