@@ -80,7 +80,7 @@ class BaseFormatterTest extends TestCase
         $expected = '2022-03-10 17:16:18';
         $message = '2022-03-10 17:16:18';
         $fakeBaseFormatter = new FakeBaseFormatter();
-        $fakeBaseFormatter->setDataTimeFake($message);
+        $fakeBaseFormatter->setDateTimeFake($message);
         $resultMessage = $fakeBaseFormatter->getDataTime();
         $this->assertEquals($expected, $resultMessage);
     }
@@ -139,7 +139,7 @@ class BaseFormatterTest extends TestCase
      */
     public function test_setDataTime_withoutParameters_shouldReturnTheDateAndTimeAsAString(): void
     {
-        $resultDataTime = $this->baseFormatter->setDataTime()->getDataTime();
+        $resultDataTime = $this->baseFormatter->setDateTime()->getDateTime();
         $date = date("Y-m-d");
 
         if (

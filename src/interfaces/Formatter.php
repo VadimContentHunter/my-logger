@@ -58,7 +58,7 @@ interface Formatter
      *
      * @return string
      */
-    public function getDataTime(): string;
+    public function getDateTime(): string;
 
     /**
      * Возвращает сгенерированную строку для лога

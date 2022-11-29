@@ -189,11 +189,11 @@ class ConsoleLogger implements LoggerInterface
       *
       * Параметр "saveToLogList" должен быть true;
       *
-      * @param string $fromDataTime От какой даты и времени (включительно); Формат:
+      * @param string $fromDateTime От какой даты и времени (включительно); Формат:
       *                             - 2001-03-10 17:16:18;
       *                             - 2001-03-10;
       *                             - 17:16:18;
-      * @param string $toDataTime   До какой даты и времени (включительно); Формат:
+      * @param string $toDateTime   До какой даты и времени (включительно); Формат:
       *                             - 2001-03-10 17:16:18;
       *                             - 2001-03-10;
       *                             - 17:16:18;
@@ -206,31 +206,31 @@ class ConsoleLogger implements LoggerInterface
       * @throws WrongExpectedResultException
       * @throws IncorrectMessageGenerationException
       */
-    public function getLogMessageFromListLogsByDataTime(string $fromDataTime, string $toDataTime = ''): array
+    public function getLogMessageFromListLogsByDateTime(string $fromDateTime, string $toDateTime = ''): array
     {
         if (!$this->saveToLogList) {
             return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
         }
 
         if (
-            preg_match('~(?<from_data>\d{4}-\d{2}-\d{2})?\s?(?<from_time>\d{2}:\d{2}:\d{2})?~u', $fromDataTime, $matchesFromDataTime)
-            && preg_match('~(?<to_data>\d{4}-\d{2}-\d{2})?\s?(?<to_time>\d{2}:\d{2}:\d{2})?~u', $toDataTime, $matchesToDataTime)
+            preg_match('~(?<from_data>\d{4}-\d{2}-\d{2})?\s?(?<from_time>\d{2}:\d{2}:\d{2})?~u', $fromDateTime, $matchesFromDateTime)
+            && preg_match('~(?<to_data>\d{4}-\d{2}-\d{2})?\s?(?<to_time>\d{2}:\d{2}:\d{2})?~u', $toDateTime, $matchesToDateTime)
         ) {
             return array_diff(array_map(
-                function (Formatter $log) use ($matchesFromDataTime, $matchesToDataTime) {
+                function (Formatter $log) use ($matchesFromDateTime, $matchesToDateTime) {
                     if (
                         preg_match(
                             '~(?<current_data>\d{4}-\d{2}-\d{2})?\s?(?<current_time>\d{2}:\d{2}:\d{2})?~u',
-                            $log->getDataTime(),
-                            $matchesCurrentDataTime
+                            $log->getDateTime(),
+                            $matchesCurrentDateTime
                         )
                     ) {
-                        $fromDate = strtotime($matchesFromDataTime['from_data'] ?? '');
-                        $fromTime = strtotime($matchesFromDataTime['from_time'] ?? '');
-                        $toDate = strtotime($matchesToDataTime['to_data'] ?? '');
-                        $toTime = strtotime($matchesToDataTime['to_time'] ?? '');
-                        $currentDate = strtotime($matchesCurrentDataTime['current_data'] ?? '');
-                        $currentTime = strtotime($matchesCurrentDataTime['current_time'] ?? '');
+                        $fromDate = strtotime($matchesFromDateTime['from_data'] ?? '');
+                        $fromTime = strtotime($matchesFromDateTime['from_time'] ?? '');
+                        $toDate = strtotime($matchesToDateTime['to_data'] ?? '');
+                        $toTime = strtotime($matchesToDateTime['to_time'] ?? '');
+                        $currentDate = strtotime($matchesCurrentDateTime['current_data'] ?? '');
+                        $currentTime = strtotime($matchesCurrentDateTime['current_time'] ?? '');
                         $onData = false;
                         $onTime = false;
 

@@ -42,7 +42,7 @@ class BaseFormatter implements Formatter
      *
      * @var string
      */
-    protected string $dataTime = '';
+    protected string $dateTime = '';
 
     /**
      * Initializes the MyLogger
@@ -66,7 +66,7 @@ class BaseFormatter implements Formatter
         array $_indexes = []
     ) {
         $this->setIndexLog($_indexes);
-        $this->setDataTime();
+        $this->setDateTime();
         $this->setStatusLog($_statusLog);
         $this->setMessageLog($_message, $_context);
     }
@@ -123,8 +123,9 @@ class BaseFormatter implements Formatter
      *
      * @return BaseFormatter
      */
-    public function setDataTime(): BaseFormatter
+    public function setDateTime(): BaseFormatter
     {
+        $this->dateTime = date("Y-m-d H:i:s");
         return $this;
     }
 
@@ -163,9 +164,9 @@ class BaseFormatter implements Formatter
      *
      * @return string
      */
-    public function getDataTime(): string
+    public function getDateTime(): string
     {
-        return $this->dataTime;
+        return $this->dateTime;
     }
 
     /**
@@ -175,7 +176,7 @@ class BaseFormatter implements Formatter
      */
     public function generateMessageLog(): string
     {
-        return '[' . $this->getIndexLog() . '] ' . '[' . $this->getDataTime() . '] ' . '[' . $this->getStatusLog() . '] ' . $this->getMessageLog();
+        return '[' . $this->getIndexLog() . '] ' . '[' . $this->getDateTime() . '] ' . '[' . $this->getStatusLog() . '] ' . $this->getMessageLog();
     }
 
     /**
@@ -196,7 +197,7 @@ class BaseFormatter implements Formatter
         ) {
             if (
                 strcmp($matches['index'], $this->getIndexLog()) === 0 &&
-                strcmp($matches['date_time'], $this->getDataTime()) === 0 &&
+                strcmp($matches['date_time'], $this->getDateTime()) === 0 &&
                 strcmp($matches['log_level'], $this->getStatusLog()) === 0 &&
                 strcmp($matches['message'], $this->getMessageLog()) === 0
             ) {
