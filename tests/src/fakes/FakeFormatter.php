@@ -100,7 +100,7 @@ class FakeFormatter implements Formatter, Stringable
      *
      * @return string
      */
-    public function getDataTime(): string
+    public function getDateTime(): string
     {
         return $this->dateTime;
     }
@@ -112,7 +112,7 @@ class FakeFormatter implements Formatter, Stringable
      */
     public function generateMessageLog(): string
     {
-        return '[' . $this->getIndexLog() . '] ' . '[' . $this->getDataTime() . '] ' . '[' . $this->getStatusLog() . '] ' . $this->getMessageLog();
+        return '[' . $this->getIndexLog() . '] ' . '[' . $this->getDateTime() . '] ' . '[' . $this->getStatusLog() . '] ' . $this->getMessageLog();
     }
 
     /**
@@ -134,7 +134,7 @@ class FakeFormatter implements Formatter, Stringable
         ) {
             if (
                 strcmp($matches['index'], $this->getIndexLog()) === 0 &&
-                strcmp($matches['date_time'], $this->getDataTime()) === 0 &&
+                strcmp($matches['date_time'], $this->getDateTime()) === 0 &&
                 strcmp($matches['log_level'], $this->getStatusLog()) === 0 &&
                 strcmp($matches['message'], $this->getMessageLog()) === 0
             ) {
