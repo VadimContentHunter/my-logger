@@ -175,7 +175,7 @@ class BaseFormatter implements Formatter
      */
     public function generateMessageLog(): string
     {
-        return '';
+        return '[' . $this->getIndexLog() . '] ' . '[' . $this->getDataTime() . '] ' . '[' . $this->getStatusLog() . '] ' . $this->getMessageLog();
     }
 
     /**
@@ -187,6 +187,24 @@ class BaseFormatter implements Formatter
      */
     public function checkGenerateMessage(string $message): bool
     {
+        if (
+            preg_match(
+                '~^\[(?<index>\d{5})\]\s\[(?<date_time>\d{4,}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2})\]\s\[(?<log_level>\w*)\]\s(?<message>.*)$~iu',
+                $message,
+                $matches
+            )
+        ) {
+            if (
+                strcmp($matches['index'], $this->getIndexLog()) === 0 &&
+                strcmp($matches['date_time'], $this->getDataTime()) === 0 &&
+                strcmp($matches['log_level'], $this->getStatusLog()) === 0 &&
+                strcmp($matches['message'], $this->getMessageLog()) === 0
+            ) {
+                return true;
+            }
+            return false;
+        }
+
         return false;
     }
 }
