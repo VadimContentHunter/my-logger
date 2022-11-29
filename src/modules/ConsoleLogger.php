@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace vadimcontenthunter\MyLogger\modules;
 
-use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
-use vadimcontenthunter\MyLogger\exceptions\NotEnabledFlagException;
+use Psr\Log\LoggerInterface;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
 use vadimcontenthunter\MyLogger\exceptions\NoFormatterException;
+use vadimcontenthunter\MyLogger\exceptions\NotEnabledFlagException;
 use vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException;
+use vadimcontenthunter\MyLogger\exceptions\WrongExpectedResultException;
 use vadimcontenthunter\MyLogger\exceptions\IncorrectMessageGenerationException;
 
 /**
@@ -24,7 +25,7 @@ class ConsoleLogger implements LoggerInterface
     /**
      * Хранит все зафиксированные логи
      *
-     * @var array <Formatter>
+     * @var array<Formatter>
      */
     protected array $listLogs = [];
 
@@ -169,11 +170,11 @@ class ConsoleLogger implements LoggerInterface
         }
 
         return array_diff(array_map(
-            function (Formatter $formatterObj) use ($statusLog) {
-                if (strcmp($formatterObj->getStatusLog(), $statusLog) === 0) {
-                    $generatedMessage = $formatterObj->generateMessageLog();
-                    if ($formatterObj->checkGenerateMessage($generatedMessage)) {
-                        return $formatterObj->generateMessageLog();
+            function (Formatter $log) use ($statusLog) {
+                if (strcmp($log->getStatusLog(), $statusLog) === 0) {
+                    $generatedMessage = $log->generateMessageLog();
+                    if ($log->checkGenerateMessage($generatedMessage)) {
+                        return $log->generateMessageLog();
                     }
 
                     throw new IncorrectMessageGenerationException();
@@ -196,19 +197,85 @@ class ConsoleLogger implements LoggerInterface
       *                             - 2001-03-10 17:16:18;
       *                             - 2001-03-10;
       *                             - 17:16:18;
+      *                             - '' - пустое значение означает, что конечной даты нет
       *
       * @return array<string>
       *
       * @throws \vadimcontenthunter\MyLogger\exceptions\InvalidArgumentException
       * @throws NotEnabledFlagException
+      * @throws WrongExpectedResultException
+      * @throws IncorrectMessageGenerationException
       */
-    public function getLogMessageFromListLogsByDataTime(string $fromDataTime, string $toDataTime): array
+    public function getLogMessageFromListLogsByDataTime(string $fromDataTime, string $toDataTime = ''): array
     {
         if (!$this->saveToLogList) {
             return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
         }
 
-        return [];
+        if (
+            preg_match('~(?<from_data>\d{4}-\d{2}-\d{2})?\s?(?<from_time>\d{2}:\d{2}:\d{2})?~u', $fromDataTime, $matchesFromDataTime)
+            && preg_match('~(?<to_data>\d{4}-\d{2}-\d{2})?\s?(?<to_time>\d{2}:\d{2}:\d{2})?~u', $toDataTime, $matchesToDataTime)
+        ) {
+            return array_diff(array_map(
+                function (Formatter $log) use ($matchesFromDataTime, $matchesToDataTime) {
+                    if (
+                        preg_match(
+                            '~(?<current_data>\d{4}-\d{2}-\d{2})?\s?(?<current_time>\d{2}:\d{2}:\d{2})?~u',
+                            $log->getDataTime(),
+                            $matchesCurrentDataTime
+                        )
+                    ) {
+                        $fromDate = strtotime($matchesFromDataTime['from_data'] ?? '');
+                        $fromTime = strtotime($matchesFromDataTime['from_time'] ?? '');
+                        $toDate = strtotime($matchesToDataTime['to_data'] ?? '');
+                        $toTime = strtotime($matchesToDataTime['to_time'] ?? '');
+                        $currentDate = strtotime($matchesCurrentDataTime['current_data'] ?? '');
+                        $currentTime = strtotime($matchesCurrentDataTime['current_time'] ?? '');
+                        $onData = false;
+                        $onTime = false;
+
+                        if (!$currentDate || !$currentTime) {
+                            throw new WrongExpectedResultException("Object method returned incorrect time and date.");
+                        }
+
+                        if (
+                            $fromDate !== false
+                            && $toDate !== false
+                            && $fromDate <= $currentDate
+                            && $toDate >= $currentDate
+                        ) {
+                            $onData = true;
+                        }
+
+                        if (
+                            $fromTime !== false
+                            && $toTime !== false
+                            && $fromTime <= $currentTime
+                            && $toTime >= $currentTime
+                        ) {
+                            $onTime = true;
+                        }
+
+                        if (
+                            ((!$fromDate && !$toDate) || (!$fromTime && !$toTime) && ($onData || $onTime))
+                            || ($fromDate !== false && $toDate !== false
+                            && $fromTime !== false && $toTime !== false
+                            && $onData && $onTime)
+                        ) {
+                            $generatedMessage = $log->generateMessageLog();
+                            if ($log->checkGenerateMessage($generatedMessage)) {
+                                return $log->generateMessageLog();
+                            }
+
+                            throw new IncorrectMessageGenerationException();
+                        }
+                    }
+                },
+                $this->listLogs
+            ), [null]);
+        }
+
+        throw new InvalidArgumentException("The date and time parameter is incorrect");
     }
 
     /**
@@ -228,7 +295,19 @@ class ConsoleLogger implements LoggerInterface
             return throw new NotEnabledFlagException('The method only works if the saveToLogList flag is enabled');
         }
 
-        return [];
+        return array_diff(array_map(
+            function (Formatter $log) use ($message) {
+                if (strcmp($log->getMessageLog(), $message) === 0) {
+                    $generatedMessage = $log->generateMessageLog();
+                    if ($log->checkGenerateMessage($generatedMessage)) {
+                        return $log->generateMessageLog();
+                    }
+
+                    throw new IncorrectMessageGenerationException();
+                }
+            },
+            $this->listLogs
+        ), [null]);
     }
 
     /**
