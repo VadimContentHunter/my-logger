@@ -81,7 +81,7 @@ class BaseFormatterTest extends TestCase
         $message = '2022-03-10 17:16:18';
         $fakeBaseFormatter = new FakeBaseFormatter();
         $fakeBaseFormatter->setDateTimeFake($message);
-        $resultMessage = $fakeBaseFormatter->getDataTime();
+        $resultMessage = $fakeBaseFormatter->getDateTime();
         $this->assertEquals($expected, $resultMessage);
     }
 
@@ -230,7 +230,7 @@ class BaseFormatterTest extends TestCase
         $expectedMessageLog = 'The file new_file.txt was created successfully.';
 
         $resGetIndex = $baseFormatter->getIndexLog();
-        $resGetDataTime = $baseFormatter->getDataTime();
+        $resGetDataTime = $baseFormatter->getDateTime();
         $resGetStatusLog = $baseFormatter->getStatusLog();
         $resGetMessageLog = $baseFormatter->getMessageLog();
 
