@@ -18,11 +18,7 @@ class BaseFormatterTest extends TestCase
 
     public function setUp(): void
     {
-        $statusLog = '';
-        $message = '';
-        $context = [];
-        $indexes = [];
-        $this->baseFormatter = new BaseFormatter($statusLog, $message, $context, $indexes);
+        $this->baseFormatter = new BaseFormatter();
     }
 
     /**
