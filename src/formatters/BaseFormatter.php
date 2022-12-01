@@ -78,6 +78,7 @@ class BaseFormatter implements Formatter
      *                                     * Имена заполнителей ДОЛЖНЫ быть разделены одной открывающей фигурной скобкой { и одной закрывающей скобкой }.
      *                                     * НЕ ДОЛЖНЫ быть пробелы между разделителями и именем заполнителя.
      *                                     * Имена заполнителей ДОЛЖНЫ состоять только из символов "A-Z, a-z, 0-9", символа подчеркивания "_" и точки ".".
+     *                                     * Длина должна быть больше или равна 1 символу.
      * @param array  $context Контекст данных для заполнителей, массив должен иметь следующий вид:
      *                        ```php
      *                        [
@@ -90,6 +91,51 @@ class BaseFormatter implements Formatter
      */
     public function setMessageLog(\Stringable|string $message, array $context = array()): BaseFormatter
     {
+        // Checking the message for valid placeholders
+        $messageSymbols = str_split($message);
+        $correctPlaceholder = true;
+        foreach ($messageSymbols as $key => $symbol) {
+            if ($symbol === '{' && $correctPlaceholder) {
+                $correctPlaceholder = false;
+            } elseif ($symbol === '}' && !$correctPlaceholder) {
+                $correctPlaceholder = true;
+            } else {
+                throw new \Psr\Log\InvalidArgumentException("Placeholder key formatting error. Rules for placeholder:
+                    Placeholder names MUST be separated by one opening brace { and one closing brace }.
+                    There MUST NOT be spaces between delimiters and the placeholder name.
+                    Placeholder names MUST only consist of the characters 'A-Z, a-z, 0-9', the underscore character '_', and the period '.'.");
+            }
+        }
+
+        // Checking a message for valid content in placeholders
+        $resultPregMatchPlaceholder = preg_match_all('~({[\w.]+})~u', $message, $matchesPlaceholder);
+        if (!$resultPregMatchPlaceholder || count($context) !== $resultPregMatchPlaceholder) {
+            throw new \Psr\Log\InvalidArgumentException("Placeholder key formatting error. Rules for placeholder:
+                Placeholder names MUST be separated by one opening brace { and one closing brace }.
+                There MUST NOT be spaces between delimiters and the placeholder name.
+                Placeholder names MUST only consist of the characters 'A-Z, a-z, 0-9', the underscore character '_', and the period '.'.");
+        }
+
+        // build a replacement array with braces around the context keys
+        $replace = array();
+        foreach ($context as $key => $val) {
+            // check that the value can be cast to string
+            if (is_string($val) || (is_object($val) && method_exists($val, '__toString'))) {
+                if ((is_string($key) || (is_object($key) && method_exists($key, '__toString'))) && preg_match('~^[\w.]+$~u', $key)) {
+                    $replace['{' . $key . '}'] = $val;
+                } else {
+                    throw new \Psr\Log\InvalidArgumentException("Placeholder key formatting error. Rules for placeholder:
+                        Placeholder names MUST be separated by one opening brace { and one closing brace }.
+                        There MUST NOT be spaces between delimiters and the placeholder name.
+                        Placeholder names MUST only consist of the characters 'A-Z, a-z, 0-9', the underscore character '_', and the period '.'.");
+                }
+            } else {
+                throw new \Psr\Log\InvalidArgumentException("Value must be a string.");
+            }
+        }
+
+        // interpolate replacement values into the message and return
+        $this->message = strtr($message, $replace);
         return $this;
     }
 
