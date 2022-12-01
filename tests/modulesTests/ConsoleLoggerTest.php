@@ -177,7 +177,7 @@ class ConsoleLoggerTest extends TestCase
         $arrFormatters = is_array($formatter) ? $formatter : [$formatter];
         $this->fakeConsoleLogger->addLogMessageInListLogsFake($arrFormatters);
         if (count($this->fakeConsoleLogger->getListLogsFake()) > 0) {
-            $resLogs = $this->fakeConsoleLogger->getLogMessageFromListLogsByDataTime(
+            $resLogs = $this->fakeConsoleLogger->getLogMessageFromListLogsByDateTime(
                 $fromDataTime,
                 $toDataTime
             );
