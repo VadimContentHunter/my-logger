@@ -200,64 +200,6 @@ class BaseFormatterTest extends TestCase
         $this->baseFormatter->getMessageLog();
     }
 
-    /**
-     * Тест конструктора
-     *
-     * @return void
-     */
-    public function test_construct_withAllParameters_shouldReturnCorrectGetMethods(): void
-    {
-        $statusLog = LogLevel::INFO;
-        $message = 'The file {file_name} was {action} successfully.';
-        $context =  [
-            'file_name' => 'new_file.txt',
-            'action' => 'created'
-        ];
-        $indexes = [
-            '00001',
-            'next',
-            '00002',
-            'Indexes',
-        ];
-        $baseFormatter = new BaseFormatter($statusLog, $message, $context, $indexes);
-
-        $expectedGetIndex = '00003';
-        $expectedStatusLog = LogLevel::INFO;
-        $expectedMessageLog = 'The file new_file.txt was created successfully.';
-
-        $resGetIndex = $baseFormatter->getIndexLog();
-        $resGetDataTime = $baseFormatter->getDataTime();
-        $resGetStatusLog = $baseFormatter->getStatusLog();
-        $resGetMessageLog = $baseFormatter->getMessageLog();
-
-        if (
-            strcasecmp($resGetIndex, $expectedGetIndex) === 0 &&
-            strcasecmp($resGetStatusLog, $expectedStatusLog) === 0 &&
-            strcasecmp($resGetMessageLog, $expectedMessageLog) === 0
-        ) {
-            $date = date("Y-m-d");
-
-            if (
-                preg_match(
-                    '~(?<date>^\d{4}-\d{2}-\d{2})(?<time>\s(?<hour>\d{2}):(?<minute>\d{2}):(?<second>\d{2}))?$~iu',
-                    $resGetDataTime,
-                    $matches
-                )
-            ) {
-                if (!isset($matches['time'])) {
-                    $this->assertEquals($date, $resGetDataTime);
-                } elseif (
-                    isset($matches['date'], $matches['time'], $matches['hour'], $matches['minute'], $matches['second']) &&
-                    strcasecmp($matches['date'], $date) === 0
-                ) {
-                    $this->assertTrue(true);
-                }
-            }
-        }
-
-        $this->assertTrue(false);
-    }
-
     public function providerWithRightMessageAndContext(): array
     {
         return ProviderBaseFormatter::rightMessageAndContext();
