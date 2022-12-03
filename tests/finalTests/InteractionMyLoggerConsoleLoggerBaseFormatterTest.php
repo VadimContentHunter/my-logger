@@ -81,4 +81,31 @@ class InteractionMyLoggerConsoleLoggerBaseFormatterTest extends TestCase
         $myLogger = new MyLogger(new ConsoleLogger(BaseFormatter::class));
         $myLogger->log($status, $message);
     }
+
+    public function test_getLogMessageFromListLogsByStatusLog_withSixLogs_shouldReturnThreeInfoTwoErrorsOneDebug(): void
+    {
+        $consoleLogger = new ConsoleLogger(BaseFormatter::class);
+        $myLogger = new MyLogger($consoleLogger);
+        $myLogger->info('Test info 1');
+        $myLogger->info('Test info 2');
+        $myLogger->error('Test error 1');
+        $myLogger->info('Test info 3');
+        $myLogger->error('Test error 2');
+        $myLogger->debug('Test debug 1');
+
+        $errors = $consoleLogger->getLogMessageFromListLogsByStatusLog(LogLevel::ERROR);
+        $info = $consoleLogger->getLogMessageFromListLogsByStatusLog(LogLevel::INFO);
+        $debug = $consoleLogger->getLogMessageFromListLogsByStatusLog(LogLevel::DEBUG);
+
+        if (
+            count($errors) === 2
+            && count($info) === 3
+            && count($debug) === 1
+        ) {
+            $this->assertTrue(true);
+            return;
+        }
+
+        $this->assertTrue(false);
+    }
 }
