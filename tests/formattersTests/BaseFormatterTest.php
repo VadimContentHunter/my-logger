@@ -145,13 +145,12 @@ class BaseFormatterTest extends TestCase
                 $matches
             )
         ) {
-            if (!isset($matches['time'])) {
-                $this->assertEquals($date, $resultDataTime);
-            } elseif (
+            if (
                 isset($matches['date'], $matches['time'], $matches['hour'], $matches['minute'], $matches['second']) &&
                 strcasecmp($matches['date'], $date) === 0
             ) {
                 $this->assertTrue(true);
+                return;
             }
         }
 
