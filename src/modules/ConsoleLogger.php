@@ -356,6 +356,7 @@ class ConsoleLogger implements LoggerInterface
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog(LogLevel::EMERGENCY);
+            $formatter->setIndexLog($this->listLogs);
 
             if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
@@ -393,6 +394,7 @@ class ConsoleLogger implements LoggerInterface
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog(LogLevel::ALERT);
+            $formatter->setIndexLog($this->listLogs);
 
             if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
@@ -429,6 +431,7 @@ class ConsoleLogger implements LoggerInterface
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog(LogLevel::CRITICAL);
+            $formatter->setIndexLog($this->listLogs);
 
             if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
@@ -464,6 +467,7 @@ class ConsoleLogger implements LoggerInterface
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog(LogLevel::ERROR);
+            $formatter->setIndexLog($this->listLogs);
 
             if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
@@ -501,6 +505,7 @@ class ConsoleLogger implements LoggerInterface
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog(LogLevel::WARNING);
+            $formatter->setIndexLog($this->listLogs);
 
             if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
@@ -535,6 +540,7 @@ class ConsoleLogger implements LoggerInterface
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog(LogLevel::NOTICE);
+            $formatter->setIndexLog($this->listLogs);
 
             if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
@@ -571,6 +577,7 @@ class ConsoleLogger implements LoggerInterface
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog(LogLevel::INFO);
+            $formatter->setIndexLog($this->listLogs);
 
             if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
@@ -605,6 +612,7 @@ class ConsoleLogger implements LoggerInterface
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog(LogLevel::DEBUG);
+            $formatter->setIndexLog($this->listLogs);
 
             if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
@@ -640,6 +648,7 @@ class ConsoleLogger implements LoggerInterface
         if ($formatter instanceof Formatter) {
             $formatter->setMessageLog($message, $context);
             $formatter->setStatusLog($level);
+            $formatter->setIndexLog($this->listLogs);
 
             if ($this->saveToLogList) {
                 $this->addLogMessageInListLogs($formatter);
