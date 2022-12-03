@@ -46,12 +46,12 @@ class FakeFormatter implements Formatter, Stringable
     }
 
     /**
-     * @param string $_index
+     * @param array $_index
      * @return FakeFormatter
      */
-    public function setIndexLog(string $_index = '00001'): FakeFormatter
+    public function setIndexLog(array $_index = ['00001']): FakeFormatter
     {
-        $this->index = $_index;
+        $this->index = $_index[0] ?? '00001';
         return $this;
     }
 

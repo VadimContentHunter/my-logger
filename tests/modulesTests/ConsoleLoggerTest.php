@@ -25,56 +25,56 @@ class ConsoleLoggerTest extends TestCase
     public function test_emergency_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $this->fakeFormatter->setStatusLog(LogLevel::EMERGENCY);
-        $this->expectOutputString($this->fakeFormatter->generateMessageLog());
+        $this->expectOutputString($this->fakeFormatter->generateMessageLog() . "\n");
         $this->fakeConsoleLogger->emergency($this->fakeFormatter->getMessageLog());
     }
 
     public function test_alert_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $this->fakeFormatter->setStatusLog(LogLevel::ALERT);
-        $this->expectOutputString($this->fakeFormatter->generateMessageLog());
+        $this->expectOutputString($this->fakeFormatter->generateMessageLog() . "\n");
         $this->fakeConsoleLogger->alert($this->fakeFormatter->getMessageLog());
     }
 
     public function test_critical_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $this->fakeFormatter->setStatusLog(LogLevel::CRITICAL);
-        $this->expectOutputString($this->fakeFormatter->generateMessageLog());
+        $this->expectOutputString($this->fakeFormatter->generateMessageLog() . "\n");
         $this->fakeConsoleLogger->critical($this->fakeFormatter->getMessageLog());
     }
 
     public function test_error_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $this->fakeFormatter->setStatusLog(LogLevel::ERROR);
-        $this->expectOutputString($this->fakeFormatter->generateMessageLog());
+        $this->expectOutputString($this->fakeFormatter->generateMessageLog() . "\n");
         $this->fakeConsoleLogger->error($this->fakeFormatter->getMessageLog());
     }
 
     public function test_warning_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $this->fakeFormatter->setStatusLog(LogLevel::WARNING);
-        $this->expectOutputString($this->fakeFormatter->generateMessageLog());
+        $this->expectOutputString($this->fakeFormatter->generateMessageLog() . "\n");
         $this->fakeConsoleLogger->warning($this->fakeFormatter->getMessageLog());
     }
 
     public function test_notice_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $this->fakeFormatter->setStatusLog(LogLevel::NOTICE);
-        $this->expectOutputString($this->fakeFormatter->generateMessageLog());
+        $this->expectOutputString($this->fakeFormatter->generateMessageLog() . "\n");
         $this->fakeConsoleLogger->notice($this->fakeFormatter->getMessageLog());
     }
 
     public function test_info_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $this->fakeFormatter->setStatusLog(LogLevel::INFO);
-        $this->expectOutputString($this->fakeFormatter->generateMessageLog());
+        $this->expectOutputString($this->fakeFormatter->generateMessageLog() . "\n");
         $this->fakeConsoleLogger->info($this->fakeFormatter->getMessageLog());
     }
 
     public function test_debug_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $this->fakeFormatter->setStatusLog(LogLevel::DEBUG);
-        $this->expectOutputString($this->fakeFormatter->generateMessageLog());
+        $this->expectOutputString($this->fakeFormatter->generateMessageLog() . "\n");
         $this->fakeConsoleLogger->debug($this->fakeFormatter->getMessageLog());
     }
 
@@ -216,7 +216,7 @@ class ConsoleLoggerTest extends TestCase
         string $logLevel
     ): void {
         $this->fakeFormatter->setStatusLog($logLevel);
-        $this->expectOutputString($this->fakeFormatter->generateMessageLog());
+        $this->expectOutputString($this->fakeFormatter->generateMessageLog() . "\n");
         $this->fakeConsoleLogger->log($logLevel, $this->fakeFormatter->getMessageLog());
     }
 
@@ -241,15 +241,15 @@ class ConsoleLoggerTest extends TestCase
             'formatter array' => [
                 (new FakeFormatter())
                     ->setStatusLog(LogLevel::INFO)
-                    ->setIndexLog('00001')
+                    ->setIndexLog(['00001'])
                     ->setMessageLog('This is just the first test message.'),
                 (new FakeFormatter())
                     ->setStatusLog(LogLevel::ERROR)
-                    ->setIndexLog('00002')
+                    ->setIndexLog(['00002'])
                     ->setMessageLog('Its just a second test message.'),
                 (new FakeFormatter())
                     ->setStatusLog(LogLevel::ERROR)
-                    ->setIndexLog('00003')
+                    ->setIndexLog(['00003'])
                     ->setMessageLog('This is just the third test message.'),
             ],
         ];
@@ -262,15 +262,15 @@ class ConsoleLoggerTest extends TestCase
                 [
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::INFO)
-                        ->setIndexLog('00001')
+                        ->setIndexLog(['00001'])
                         ->setMessageLog('This is just the first test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00002')
+                        ->setIndexLog(['00002'])
                         ->setMessageLog('Its just a second test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00003')
+                        ->setIndexLog(['00003'])
                         ->setMessageLog('This is just the third test message.'),
                 ],
                 1
@@ -285,15 +285,15 @@ class ConsoleLoggerTest extends TestCase
                 [
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::INFO)
-                        ->setIndexLog('00001')
+                        ->setIndexLog(['00001'])
                         ->setMessageLog('This is just the first test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00002')
+                        ->setIndexLog(['00002'])
                         ->setMessageLog('Its just a second test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00003')
+                        ->setIndexLog(['00003'])
                         ->setMessageLog('This is just the third test message.'),
                 ],
                 '00002'
@@ -308,27 +308,27 @@ class ConsoleLoggerTest extends TestCase
                 [
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::INFO)
-                        ->setIndexLog('00001')
+                        ->setIndexLog(['00001'])
                         ->setMessageLog('This is just the first test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00002')
+                        ->setIndexLog(['00002'])
                         ->setMessageLog('Its just a second test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00003')
+                        ->setIndexLog(['00003'])
                         ->setMessageLog('This is just the third test message.'),
                 ],
                 LogLevel::ERROR,
                 [
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00002')
+                        ->setIndexLog(['00002'])
                         ->setMessageLog('Its just a second test message.')
                         ->generateMessageLog(),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00003')
+                        ->setIndexLog(['00003'])
                         ->setMessageLog('This is just the third test message.')
                         ->generateMessageLog(),
                 ],
@@ -343,22 +343,22 @@ class ConsoleLoggerTest extends TestCase
                 [
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::INFO)
-                        ->setIndexLog('00001')
+                        ->setIndexLog(['00001'])
                         ->setMessageLog('This is just the first test message.')
                         ->setDateTime('2001-03-10 17:06:18'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00002')
+                        ->setIndexLog(['00002'])
                         ->setMessageLog('Its just a second test message.')
                         ->setDateTime('2001-03-12 17:16:18'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00003')
+                        ->setIndexLog(['00003'])
                         ->setMessageLog('Its just a 4 test message.')
                         ->setDateTime('2001-03-12 18:30:18'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00004')
+                        ->setIndexLog(['00004'])
                         ->setMessageLog('This is just the third test message.')
                         ->setDateTime('2001-03-12 19:10:08'),
                 ],
@@ -367,13 +367,13 @@ class ConsoleLoggerTest extends TestCase
                 [
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00002')
+                        ->setIndexLog(['00002'])
                         ->setMessageLog('Its just a second test message.')
                         ->setDateTime('2001-03-12 17:16:18')
                         ->generateMessageLog(),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00003')
+                        ->setIndexLog(['00003'])
                         ->setMessageLog('Its just a 4 test message.')
                         ->setDateTime('2001-03-12 18:30:18')
                         ->generateMessageLog(),
@@ -389,30 +389,30 @@ class ConsoleLoggerTest extends TestCase
                 [
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::INFO)
-                        ->setIndexLog('00001')
+                        ->setIndexLog(['00001'])
                         ->setMessageLog('This is just the first test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00002')
+                        ->setIndexLog(['00002'])
                         ->setMessageLog('Its just a second test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00003')
+                        ->setIndexLog(['00003'])
                         ->setMessageLog('This is just the third test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::INFO)
-                        ->setIndexLog('00004')
+                        ->setIndexLog(['00004'])
                         ->setMessageLog('Its just a second test message.'),
                 ],
                 'Its just a second test message.',
                 [
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::ERROR)
-                        ->setIndexLog('00002')
+                        ->setIndexLog(['00002'])
                         ->setMessageLog('Its just a second test message.'),
                     (new FakeFormatter())
                         ->setStatusLog(LogLevel::INFO)
-                        ->setIndexLog('00004')
+                        ->setIndexLog(['00004'])
                         ->setMessageLog('Its just a second test message.'),
                 ]
             ],
