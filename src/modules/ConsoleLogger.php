@@ -364,7 +364,7 @@ class ConsoleLogger implements LoggerInterface
 
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
-                echo $generatedMessage;
+                echo $generatedMessage . "\n";
                 return;
             }
 
@@ -402,7 +402,7 @@ class ConsoleLogger implements LoggerInterface
 
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
-                echo $generatedMessage;
+                echo $generatedMessage . "\n";
                 return;
             }
 
@@ -439,7 +439,7 @@ class ConsoleLogger implements LoggerInterface
 
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
-                echo $generatedMessage;
+                echo $generatedMessage . "\n";
                 return;
             }
 
@@ -475,7 +475,7 @@ class ConsoleLogger implements LoggerInterface
 
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
-                echo $generatedMessage;
+                echo $generatedMessage . "\n";
                 return;
             }
 
@@ -513,7 +513,7 @@ class ConsoleLogger implements LoggerInterface
 
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
-                echo $generatedMessage;
+                echo $generatedMessage . "\n";
                 return;
             }
 
@@ -548,7 +548,7 @@ class ConsoleLogger implements LoggerInterface
 
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
-                echo $generatedMessage;
+                echo $generatedMessage . "\n";
                 return;
             }
 
@@ -585,7 +585,7 @@ class ConsoleLogger implements LoggerInterface
 
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
-                echo $generatedMessage;
+                echo $generatedMessage . "\n";
                 return;
             }
 
@@ -620,7 +620,7 @@ class ConsoleLogger implements LoggerInterface
 
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
-                echo $generatedMessage;
+                echo $generatedMessage . "\n";
                 return;
             }
 
@@ -656,7 +656,7 @@ class ConsoleLogger implements LoggerInterface
 
             $generatedMessage = $formatter->generateMessageLog();
             if ($formatter->checkGenerateMessage($generatedMessage)) {
-                echo $generatedMessage;
+                echo $generatedMessage . "\n";
                 return;
             }
 
