@@ -154,6 +154,8 @@ class BaseFormatter implements Formatter
                     $startIndex++;
                 } elseif (is_numeric($index) && (int) $index === $startIndex) {
                     $startIndex++;
+                } else {
+                    throw new \Psr\Log\InvalidArgumentException('Index elements must be a string or an object of class Formatter.');
                 }
             }
         }
@@ -172,6 +174,18 @@ class BaseFormatter implements Formatter
      */
     public function setStatusLog(string $statusLog): BaseFormatter
     {
+        $this->statusLog = match ($statusLog) {
+            LogLevel::ALERT => LogLevel::ALERT,
+            LogLevel::CRITICAL => LogLevel::CRITICAL,
+            LogLevel::DEBUG => LogLevel::DEBUG,
+            LogLevel::EMERGENCY => LogLevel::EMERGENCY,
+            LogLevel::ERROR => LogLevel::ERROR,
+            LogLevel::INFO => LogLevel::INFO,
+            LogLevel::NOTICE => LogLevel::NOTICE,
+            LogLevel::WARNING => LogLevel::WARNING,
+            default => throw new \Psr\Log\InvalidArgumentException('Status is indeterminate'),
+        };
+
         return $this;
     }
 
