@@ -134,12 +134,32 @@ class BaseFormatter implements Formatter
     /**
      * Устанавливает индекс для лога
      *
-     * @param array $indexes Существующие индексы. Нужны для генерации индекса не похожего на один из этого списка.
+     * @param array<Formatter|string> $indexes Существующие индексы. Нужны для генерации индекса не похожего на один из этого списка.
+     *                                         Индексы формируются по порядку возрастания и заполняют пропущенные индексы в том же порядке.
      *
      * @return BaseFormatter
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
     public function setIndexLog(array $indexes): BaseFormatter
     {
+        $startIndex = 1;
+        for ($i = 0; $i <= count($indexes); $i++) {
+            foreach ($indexes as $key => $index) {
+                if (
+                    $index instanceof Formatter
+                    && is_numeric($index->getIndexLog())
+                    && (int) $index->getIndexLog() === $startIndex
+                ) {
+                    $startIndex++;
+                } elseif (is_numeric($index) && (int) $index === $startIndex) {
+                    $startIndex++;
+                }
+            }
+        }
+
+        $this->index = str_pad((string)$startIndex, 5, "0", STR_PAD_LEFT);
+
         return $this;
     }
 
