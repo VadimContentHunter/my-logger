@@ -45,6 +45,39 @@ class BaseFormatter implements Formatter
     protected string $dateTime = '';
 
     /**
+     * Initializes the MyLogger
+     *
+     * @param string|null $_statusLog Статус для лога
+     * @param \Stringable|string|null $_message   Входная строка, которая будет отформатирована.
+     *                                            Имена заполнителей ДОЛЖНЫ быть разделены одной открывающей фигурной скобкой { и одной закрывающей скобкой }.
+     *                                            НЕ ДОЛЖНЫ быть пробелы между разделителями и именем заполнителя.
+     *                                            Имена заполнителей ДОЛЖНЫ состоять только из символов "A-Z, a-z, 0-9", символа подчеркивания "_" и точки ".".
+     * @param array|null $_context   Контекст данных для заполнителей, массив должен иметь следующий вид:
+     *                               ```php
+     *                               [
+     *                               "name_placeholder" => "replacement string"
+     *                               ]
+     * @param array|null $_indexes   Существующие индексы. Нужны для генерации индекса не похожего на один из этого списка.
+     */
+    public function __construct(
+        ?string $_statusLog = null,
+        \Stringable|string|null $_message = null,
+        array $_context = [],
+        array $_indexes = [],
+    ) {
+        if ($_statusLog !== null) {
+            $this->setStatusLog($_statusLog);
+        }
+
+        if ($_message !== null) {
+            $this->setMessageLog($_message, $_context);
+        }
+
+        $this->setIndexLog($_indexes);
+        $this->setDateTime();
+    }
+
+    /**
      * Форматирует строку для описания лога
      *
      * @param \Stringable|string  $message Входная строка, которая будет отформатирована.
