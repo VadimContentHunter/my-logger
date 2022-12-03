@@ -138,8 +138,6 @@ class BaseFormatter implements Formatter
      *                                         Индексы формируются по порядку возрастания и заполняют пропущенные индексы в том же порядке.
      *
      * @return BaseFormatter
-     *
-     * @throws \Psr\Log\InvalidArgumentException
      */
     public function setIndexLog(array $indexes): BaseFormatter
     {
@@ -154,8 +152,6 @@ class BaseFormatter implements Formatter
                     $startIndex++;
                 } elseif (is_numeric($index) && (int) $index === $startIndex) {
                     $startIndex++;
-                } else {
-                    throw new \Psr\Log\InvalidArgumentException('Index elements must be a string or an object of class Formatter.');
                 }
             }
         }
