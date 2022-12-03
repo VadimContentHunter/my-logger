@@ -20,7 +20,7 @@ class FakeBaseFormatter extends BaseFormatter
         $this->message = '';
         $this->index = '';
         $this->statusLog = '';
-        $this->dataTime = '';
+        $this->dateTime = '';
     }
 
     /**
@@ -47,9 +47,9 @@ class FakeBaseFormatter extends BaseFormatter
         return $this;
     }
 
-    public function setDataTimeFake(string $_dataTime = ''): FakeBaseFormatter
+    public function setDateTimeFake(string $_dataTime = ''): FakeBaseFormatter
     {
-        $this->dataTime = $_dataTime;
+        $this->dateTime = $_dataTime;
         return $this;
     }
 }

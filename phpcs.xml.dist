@@ -18,6 +18,8 @@
     </rule>
 
     <rule ref="PEAR">
+        <exclude name="PEAR.ControlStructures.MultiLineCondition.StartWithBoolean" />
+        <exclude name="PEAR.ControlStructures.MultiLineCondition.SpacingAfterOpenBrace" />
         <exclude name="PEAR.Commenting.FileComment.Missing" />
         <!-- <exclude name="PEAR.Commenting.ClassComment.Missing" /> -->
         <!-- <exclude name="PEAR.Commenting.ClassComment.MissingAuthorTag" /> -->

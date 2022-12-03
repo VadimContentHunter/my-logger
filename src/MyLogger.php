@@ -71,6 +71,7 @@ class MyLogger implements LoggerInterface
      */
     public function execute(callable $callBackFun): void
     {
+        array_map($callBackFun, $this->loggers);
     }
 
     /**
@@ -83,6 +84,9 @@ class MyLogger implements LoggerInterface
      */
     public function emergency(string|Stringable $message, array $context = []): void
     {
+        array_map(function (LoggerInterface $loggerObj) use ($message, $context): void {
+            $loggerObj->emergency($message, $context);
+        }, $this->loggers);
     }
 
      /**
@@ -98,6 +102,9 @@ class MyLogger implements LoggerInterface
       */
     public function alert(string|Stringable $message, array $context = []): void
     {
+        array_map(function (LoggerInterface $loggerObj) use ($message, $context): void {
+            $loggerObj->alert($message, $context);
+        }, $this->loggers);
     }
 
     /**
@@ -112,6 +119,9 @@ class MyLogger implements LoggerInterface
      */
     public function critical(string|Stringable $message, array $context = []): void
     {
+        array_map(function (LoggerInterface $loggerObj) use ($message, $context): void {
+            $loggerObj->critical($message, $context);
+        }, $this->loggers);
     }
 
     /**
@@ -125,6 +135,9 @@ class MyLogger implements LoggerInterface
      */
     public function error(string|Stringable $message, array $context = []): void
     {
+        array_map(function (LoggerInterface $loggerObj) use ($message, $context): void {
+            $loggerObj->error($message, $context);
+        }, $this->loggers);
     }
 
      /**
@@ -137,6 +150,9 @@ class MyLogger implements LoggerInterface
       */
     public function warning(string|Stringable $message, array $context = []): void
     {
+        array_map(function (LoggerInterface $loggerObj) use ($message, $context): void {
+            $loggerObj->warning($message, $context);
+        }, $this->loggers);
     }
 
     /**
@@ -151,6 +167,9 @@ class MyLogger implements LoggerInterface
      */
     public function notice(string|Stringable $message, array $context = []): void
     {
+        array_map(function (LoggerInterface $loggerObj) use ($message, $context): void {
+            $loggerObj->notice($message, $context);
+        }, $this->loggers);
     }
 
      /**
@@ -163,6 +182,9 @@ class MyLogger implements LoggerInterface
       */
     public function info(string|Stringable $message, array $context = []): void
     {
+        array_map(function (LoggerInterface $loggerObj) use ($message, $context): void {
+            $loggerObj->info($message, $context);
+        }, $this->loggers);
     }
 
      /**
@@ -175,6 +197,9 @@ class MyLogger implements LoggerInterface
       */
     public function debug(string|Stringable $message, array $context = []): void
     {
+        array_map(function (LoggerInterface $loggerObj) use ($message, $context): void {
+            $loggerObj->debug($message, $context);
+        }, $this->loggers);
     }
 
     /**
@@ -190,5 +215,8 @@ class MyLogger implements LoggerInterface
      */
     public function log($level, string|Stringable $message, array $context = []): void
     {
+        array_map(function (LoggerInterface $loggerObj) use ($level, $message, $context): void {
+            $loggerObj->log($level, $message, $context);
+        }, $this->loggers);
     }
 }

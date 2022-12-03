@@ -13,6 +13,16 @@ namespace vadimcontenthunter\MyLogger\interfaces;
  */
 interface Formatter
 {
+     /**
+      * Устанавливает индекс для лога
+      *
+      * @param array $indexes Существующие индексы. Нужны для генерации индекса не похожего на один из этого списка.
+      *                       Индексы формируются по порядку возрастания и заполняют пропущенные индексы в том же порядке.
+      *
+      * @return mixed
+      */
+    public function setIndexLog(array $indexes): mixed;
+
     /**
      * Устанавливает статус для лога
      *
@@ -58,7 +68,7 @@ interface Formatter
      *
      * @return string
      */
-    public function getDataTime(): string;
+    public function getDateTime(): string;
 
     /**
      * Возвращает сгенерированную строку для лога

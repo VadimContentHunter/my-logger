@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace  vadimcontenthunter\MyLogger\Tests\src\fakes;
 
 use Psr\Log\LogLevel;
+use Stringable;
 use vadimcontenthunter\MyLogger\interfaces\Formatter;
 
-class FakeFormatter implements Formatter
+class FakeFormatter implements Formatter, Stringable
 {
     protected string $logLevel;
 
@@ -16,6 +17,13 @@ class FakeFormatter implements Formatter
     protected string $index;
 
     protected string $dateTime;
+
+    public function __construct()
+    {
+        $this->setIndexLog();
+        $this->setDateTime();
+        $this->setMessageLog();
+    }
 
     /**
      * @param string $_logLevel
@@ -38,12 +46,12 @@ class FakeFormatter implements Formatter
     }
 
     /**
-     * @param string $_index
+     * @param array $_index
      * @return FakeFormatter
      */
-    public function setIndexLog(string $_index = '00001'): FakeFormatter
+    public function setIndexLog(array $_index = ['00001']): FakeFormatter
     {
-        $this->index = $_index;
+        $this->index = $_index[0] ?? '00001';
         return $this;
     }
 
@@ -92,7 +100,7 @@ class FakeFormatter implements Formatter
      *
      * @return string
      */
-    public function getDataTime(): string
+    public function getDateTime(): string
     {
         return $this->dateTime;
     }
@@ -104,7 +112,7 @@ class FakeFormatter implements Formatter
      */
     public function generateMessageLog(): string
     {
-        return '[' . $this->getIndexLog() . '] ' . '[' . $this->getDataTime() . '] ' . '[' . $this->getStatusLog() . '] ' . $this->getMessageLog();
+        return '[' . $this->getIndexLog() . '] ' . '[' . $this->getDateTime() . '] ' . '[' . $this->getStatusLog() . '] ' . $this->getMessageLog();
     }
 
     /**
@@ -119,14 +127,14 @@ class FakeFormatter implements Formatter
     {
         if (
             preg_match(
-                '~^(?<index>\[\d{5}\])\s(?<date_time>\[\d{4,}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}\])\s(?<log_level>\[\w*\])\s(?<message>.*)$~iu',
+                '~^\[(?<index>\d{5})\]\s\[(?<date_time>\d{4,}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2})\]\s\[(?<log_level>\w*)\]\s(?<message>.*)$~iu',
                 $message,
                 $matches
             )
         ) {
             if (
                 strcmp($matches['index'], $this->getIndexLog()) === 0 &&
-                strcmp($matches['date_time'], $this->getDataTime()) === 0 &&
+                strcmp($matches['date_time'], $this->getDateTime()) === 0 &&
                 strcmp($matches['log_level'], $this->getStatusLog()) === 0 &&
                 strcmp($matches['message'], $this->getMessageLog()) === 0
             ) {
@@ -136,5 +144,10 @@ class FakeFormatter implements Formatter
         }
 
         return false;
+    }
+
+    public function __toString(): string
+    {
+        return $this->generateMessageLog();
     }
 }

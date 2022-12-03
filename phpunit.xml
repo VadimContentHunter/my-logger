@@ -15,5 +15,8 @@
     <testsuite name="Tests for logger formatters">
       <directory suffix="Test.php" phpVersion="8.1.1">./tests/formattersTests/</directory>
     </testsuite>
+    <testsuite name="Tests with class interaction">
+      <directory suffix="Test.php" phpVersion="8.1.1">./tests/finalTests/</directory>
+    </testsuite>
   </testsuites>
 </phpunit>

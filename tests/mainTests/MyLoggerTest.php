@@ -27,56 +27,64 @@ class MyLoggerTest extends TestCase
     public function test_emergency_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $message = 'Calling the emergency method!';
-        $this->expectOutputString($message);
+        $regex = '~^.*Calling the emergency method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->emergency($message, []);
     }
 
     public function test_alert_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $message = 'Calling the alert method!';
-        $this->expectOutputString($message);
+        $regex = '~^.*Calling the alert method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->alert($message, []);
     }
 
     public function test_critical_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $message = 'Calling the critical method!';
-        $this->expectOutputString($message);
+        $regex = '~^.*Calling the critical method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->critical($message, []);
     }
 
     public function test_error_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $message = 'Calling the error method!';
-        $this->expectOutputString($message);
+        $regex = '~^.*Calling the error method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->error($message, []);
     }
 
     public function test_warning_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $message = 'Calling the warning method!';
-        $this->expectOutputString($message);
+        $regex = '~^.*Calling the warning method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->warning($message, []);
     }
 
     public function test_notice_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $message = 'Calling the notice method!';
-        $this->expectOutputString($message);
+        $regex = '~^.*Calling the notice method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->notice($message, []);
     }
 
     public function test_info_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $message = 'Calling the info method!';
-        $this->expectOutputString($message);
+        $regex = '~^.*Calling the info method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->info($message, []);
     }
 
     public function test_debug_withMessageAndContext_shouldWriteAMessageToTheConsole(): void
     {
         $message = 'Calling the debug method!';
-        $this->expectOutputString($message);
+        $regex = '~^.*Calling the debug method!.*$~u';
+        $this->expectOutputRegex($regex);
         $this->myLoggerFake->debug($message, []);
     }
 
@@ -87,8 +95,9 @@ class MyLoggerTest extends TestCase
         $this->myLoggerFake->execute(function ($logger) use ($param) {
             if ($logger instanceof ModuleEchoFake) {
                 $logger->specialMethod($param);
+            } else {
+                throw new \Exception("Error logger does not conform to ModuleEchoFake interface");
             }
-            throw new \Exception("Error logger does not conform to ModuleEchoFake interface");
         });
     }
 
