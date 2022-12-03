@@ -97,15 +97,27 @@ class InteractionMyLoggerConsoleLoggerBaseFormatterTest extends TestCase
         $info = $consoleLogger->getLogMessageFromListLogsByStatusLog(LogLevel::INFO);
         $debug = $consoleLogger->getLogMessageFromListLogsByStatusLog(LogLevel::DEBUG);
 
-        if (
-            count($errors) === 2
-            && count($info) === 3
-            && count($debug) === 1
-        ) {
-            $this->assertTrue(true);
-            return;
+        foreach ($errors as $key => $log) {
+            if (!preg_match('~^\[\d{5}]\s\[\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}\]\s\[' . LogLevel::ERROR . ']\sTest error [12]$~u', $log)) {
+                $this->assertTrue(false);
+                return;
+            }
         }
 
-        $this->assertTrue(false);
+        foreach ($info as $key => $log) {
+            if (!preg_match('~^\[\d{5}]\s\[\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}\]\s\[' . LogLevel::INFO . ']\sTest info [123]$~u', $log)) {
+                $this->assertTrue(false);
+                return;
+            }
+        }
+
+        foreach ($debug as $key => $log) {
+            if (!preg_match('~^\[\d{5}]\s\[\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}\]\s\[' . LogLevel::DEBUG . ']\sTest debug 1$~u', $log)) {
+                $this->assertTrue(false);
+                return;
+            }
+        }
+
+        $this->assertTrue(true);
     }
 }
