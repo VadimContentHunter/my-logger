@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace vadimcontenthunter\MyLogger\exceptions;
 
 /**
- * Исключение сообщает о том что класс не соответствует интерфейсу 'LoggerInterface'.
+ * Исключение сообщает о неправильном аргументе метода.
  *
  * @package   MyLogger_Exceptions
  * @author    Vadim Volkovskyi <project.k.vadim@gmail.com>
