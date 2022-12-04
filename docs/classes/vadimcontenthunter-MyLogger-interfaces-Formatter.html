@@ -73,11 +73,23 @@
 </h4>
 
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="packages/Vadimcontenthunter.html" class="">Vadimcontenthunter</a>
+    <a href="packages/MyLogger.html" class="">MyLogger</a>
 </h4>
     <ul class="phpdocumentor-list">
                     <li>
-                <a href="packages/Vadimcontenthunter-MyLogger.html" class="">MyLogger</a>
+                <a href="packages/MyLogger-Exceptions.html" class="">Exceptions</a>
+                
+            </li>
+                    <li>
+                <a href="packages/MyLogger-Formatters.html" class="">Formatters</a>
+                
+            </li>
+                    <li>
+                <a href="packages/MyLogger-Interfaces.html" class="">Interfaces</a>
+                
+            </li>
+                    <li>
+                <a href="packages/MyLogger-Modules.html" class="">Modules</a>
                 
             </li>
             </ul>
@@ -110,9 +122,8 @@
                 <div class="phpdocumentor-element__package">
             in
             <ul class="phpdocumentor-breadcrumbs">
-                                    <li><a href="packages/Vadimcontenthunter.html">Vadimcontenthunter</a></li>
-                                    <li><a href="packages/Vadimcontenthunter-MyLogger.html">MyLogger</a></li>
-                                    <li><a href="packages/Vadimcontenthunter-MyLogger-Interfaces.html">Interfaces</a></li>
+                                    <li><a href="packages/MyLogger.html">MyLogger</a></li>
+                                    <li><a href="packages/MyLogger-Interfaces.html">Interfaces</a></li>
                             </ul>
         </div>
     </h2>
@@ -124,7 +135,7 @@
 
     </aside>
 
-            <p class="phpdocumentor-summary">Summary of Formatter</p>
+            <p class="phpdocumentor-summary">Данный интерфейс должны реализовывать все классы, которые будут заниматься форматированием сообщения.</p>
 
 
 
@@ -138,7 +149,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Gregory Beaver <a href="mailto:cellog@php.net">cellog@php.net</a></p>
+                                                 <section class="phpdocumentor-description"><p>Vadim Volkovskyi <a href="mailto:project.k.vadim@gmail.com">project.k.vadim@gmail.com</a></p>
 </section>
 
                                     </dd>
@@ -147,7 +158,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Copyright (c) 2002, Gregory Beaver</p>
+                                                 <section class="phpdocumentor-description"><p>(c) Vadim Volkovskyi 2022</p>
 </section>
 
                                     </dd>
@@ -165,11 +176,67 @@
 
 <dl class="phpdocumentor-table-of-contents">
                         <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getMessage">getMessage()</a>
+    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_checkGenerateMessage">checkGenerateMessage()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Проверка правильности сгенерированного сообщения</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_generateMessageLog">generateMessageLog()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Summary of getMessage</dd>
+<dd>Возвращает сгенерированную строку для лога</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getDateTime">getDateTime()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Возвращает дату и время фиксации лога</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getIndexLog">getIndexLog()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Возвращает уникальный индекс лога</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getMessageLog">getMessageLog()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Метод возвращает отформатированное сообщение</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getStatusLog">getStatusLog()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Возвращает уровень лога</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_setIndexLog">setIndexLog()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Устанавливает индекс для лога</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_setMessageLog">setMessageLog()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Метод устанавливает значение для сообщения</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_setStatusLog">setStatusLog()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Устанавливает статус для лога</dd>
 
         </dl>
 
@@ -188,22 +255,280 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getMessage">
-        getMessage()
-        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getMessage" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_checkGenerateMessage">
+        checkGenerateMessage()
+        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_checkGenerateMessage" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/interfaces/Formatter.php"><a href="files/src-interfaces-formatter.html"><abbr title="src/interfaces/Formatter.php">Formatter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">87</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Summary of getMessage</p>
+        <p class="phpdocumentor-summary">Проверка правильности сгенерированного сообщения</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getMessage</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Stringable">Stringable</abbr>|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$message</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$context</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">checkGenerateMessage</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$message</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$message</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Сообщение для проверки</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Возвращает true, в случае если сгенерированное сообщение соответствует формату иначе false.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_generateMessageLog">
+        generateMessageLog()
+        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_generateMessageLog" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/interfaces/Formatter.php"><a href="files/src-interfaces-formatter.html"><abbr title="src/interfaces/Formatter.php">Formatter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">78</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Возвращает сгенерированную строку для лога</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">generateMessageLog</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getDateTime">
+        getDateTime()
+        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getDateTime" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/interfaces/Formatter.php"><a href="files/src-interfaces-formatter.html"><abbr title="src/interfaces/Formatter.php">Formatter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">71</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Возвращает дату и время фиксации лога</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getDateTime</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getIndexLog">
+        getIndexLog()
+        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getIndexLog" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/interfaces/Formatter.php"><a href="files/src-interfaces-formatter.html"><abbr title="src/interfaces/Formatter.php">Formatter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">57</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Возвращает уникальный индекс лога</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getIndexLog</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getMessageLog">
+        getMessageLog()
+        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getMessageLog" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/interfaces/Formatter.php"><a href="files/src-interfaces-formatter.html"><abbr title="src/interfaces/Formatter.php">Formatter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">50</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Метод возвращает отформатированное сообщение</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getMessageLog</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getStatusLog">
+        getStatusLog()
+        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getStatusLog" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/interfaces/Formatter.php"><a href="files/src-interfaces-formatter.html"><abbr title="src/interfaces/Formatter.php">Formatter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Возвращает уровень лога</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getStatusLog</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setIndexLog">
+        setIndexLog()
+        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_setIndexLog" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/interfaces/Formatter.php"><a href="files/src-interfaces-formatter.html"><abbr title="src/interfaces/Formatter.php">Formatter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">24</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Устанавливает индекс для лога</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setIndexLog</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$indexes</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$indexes</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Существующие индексы. Нужны для генерации индекса не похожего на один из этого списка.
+Индексы формируются по порядку возрастания и заполняют пропущенные индексы в том же порядке.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setMessageLog">
+        setMessageLog()
+        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_setMessageLog" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/interfaces/Formatter.php"><a href="files/src-interfaces-formatter.html"><abbr title="src/interfaces/Formatter.php">Formatter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">43</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Метод устанавливает значение для сообщения</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setMessageLog</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Stringable">Stringable</abbr>|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$message</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$context</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">array()</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -218,7 +543,7 @@
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$context</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+                 = <span class="phpdocumentor-signature__argument__default-value">array()</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -227,7 +552,52 @@
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setStatusLog">
+        setStatusLog()
+        <a href="classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_setStatusLog" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/interfaces/Formatter.php"><a href="files/src-interfaces-formatter.html"><abbr title="src/interfaces/Formatter.php">Formatter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Устанавливает статус для лога</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setStatusLog</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$statusLog</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$statusLog</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Статус для лога</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
         
     

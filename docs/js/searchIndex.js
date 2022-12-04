@@ -3,98 +3,383 @@ Search.appendIndex(
                 {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\MyLoggerException",
             "name": "MyLoggerException",
-            "summary": "",
+            "summary": "\u0418\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0020\u0432\u0020\u043F\u0440\u043E\u0435\u043A\u0442\u0435\u0020MyLogger",
             "url": "classes/vadimcontenthunter-MyLogger-exceptions-MyLoggerException.html"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\MyLoggerException\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initializes\u0020the\u0020MyLoggerException",
             "url": "classes/vadimcontenthunter-MyLogger-exceptions-MyLoggerException.html#method___construct"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter",
             "name": "BaseFormatter",
-            "summary": "",
+            "summary": "\u041A\u043B\u0430\u0441\u0441\u0020\u0441\u043B\u0435\u0434\u0443\u0435\u0442\u0020\u043F\u0440\u0430\u0432\u0438\u043B\u0430\u043C\u0020\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044E\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F\u0020\u0438\u0437\u0020\u0022PSR\u002D3\u003A\u0020Logger\u0020Interface\u0022",
             "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html"
         },                {
-            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AgetMessage\u0028\u0029",
-            "name": "getMessage",
-            "summary": "Summary\u0020of\u0020getMessage",
-            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_getMessage"
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initializes\u0020the\u0020MyLogger",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method___construct"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AsetMessageLog\u0028\u0029",
+            "name": "setMessageLog",
+            "summary": "\u0424\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u0443\u0435\u0442\u0020\u0441\u0442\u0440\u043E\u043A\u0443\u0020\u0434\u043B\u044F\u0020\u043E\u043F\u0438\u0441\u0430\u043D\u0438\u044F\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_setMessageLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AsetIndexLog\u0028\u0029",
+            "name": "setIndexLog",
+            "summary": "\u0423\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442\u0020\u0438\u043D\u0434\u0435\u043A\u0441\u0020\u0434\u043B\u044F\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_setIndexLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AsetStatusLog\u0028\u0029",
+            "name": "setStatusLog",
+            "summary": "\u0423\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442\u0020\u0441\u0442\u0430\u0442\u0443\u0441\u0020\u0434\u043B\u044F\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_setStatusLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AsetDateTime\u0028\u0029",
+            "name": "setDateTime",
+            "summary": "\u0423\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442\u0020\u0434\u0430\u0442\u0443\u0020\u0438\u0020\u0432\u0440\u0435\u043C\u044F\u0020\u0444\u0438\u043A\u0441\u0430\u0446\u0438\u0438\u0020\u043B\u043E\u0433\u0430.",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_setDateTime"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AgetMessageLog\u0028\u0029",
+            "name": "getMessageLog",
+            "summary": "\u041C\u0435\u0442\u043E\u0434\u0020\u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u043E\u0442\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u0443\u044E\u0020\u0441\u0442\u0440\u043E\u043A\u0443",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_getMessageLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AgetIndexLog\u0028\u0029",
+            "name": "getIndexLog",
+            "summary": "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u0443\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u044B\u0439\u0020\u0438\u043D\u0434\u0435\u043A\u0441\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_getIndexLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AgetStatusLog\u0028\u0029",
+            "name": "getStatusLog",
+            "summary": "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_getStatusLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AgetDateTime\u0028\u0029",
+            "name": "getDateTime",
+            "summary": "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u0434\u0430\u0442\u0443\u0020\u0438\u0020\u0432\u0440\u0435\u043C\u044F\u0020\u0444\u0438\u043A\u0441\u0430\u0446\u0438\u0438\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_getDateTime"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AgenerateMessageLog\u0028\u0029",
+            "name": "generateMessageLog",
+            "summary": "\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_generateMessageLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003AcheckGenerateMessage\u0028\u0029",
+            "name": "checkGenerateMessage",
+            "summary": "\u041F\u0440\u043E\u0432\u0435\u0440\u043A\u0430\u0020\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E\u0441\u0442\u0438\u0020\u0441\u0433\u0435\u043D\u0435\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E\u0433\u043E\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#method_checkGenerateMessage"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003A\u0024message",
+            "name": "message",
+            "summary": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#property_message"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003A\u0024index",
+            "name": "index",
+            "summary": "\u0423\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u044B\u0439\u0020\u0438\u043D\u0434\u0435\u043A\u0441",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#property_index"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003A\u0024statusLog",
+            "name": "statusLog",
+            "summary": "\u0421\u0442\u0430\u0442\u0443\u0441\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#property_statusLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\formatters\\BaseFormatter\u003A\u003A\u0024dateTime",
+            "name": "dateTime",
+            "summary": "\u0414\u0430\u0442\u0430\u0020\u0438\u0020\u0432\u0440\u0435\u043C\u044F\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-formatters-BaseFormatter.html#property_dateTime"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter",
             "name": "Formatter",
-            "summary": "Summary\u0020of\u0020Formatter",
+            "summary": "\u0414\u0430\u043D\u043D\u044B\u0439\u0020\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0020\u0434\u043E\u043B\u0436\u043D\u044B\u0020\u0440\u0435\u0430\u043B\u0438\u0437\u043E\u0432\u044B\u0432\u0430\u0442\u044C\u0020\u0432\u0441\u0435\u0020\u043A\u043B\u0430\u0441\u0441\u044B,\u0020\u043A\u043E\u0442\u043E\u0440\u044B\u0435\u0020\u0431\u0443\u0434\u0443\u0442\u0020\u0437\u0430\u043D\u0438\u043C\u0430\u0442\u044C\u0441\u044F\u0020\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\u043C\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F.",
             "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html"
         },                {
-            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AgetMessage\u0028\u0029",
-            "name": "getMessage",
-            "summary": "Summary\u0020of\u0020getMessage",
-            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getMessage"
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AsetIndexLog\u0028\u0029",
+            "name": "setIndexLog",
+            "summary": "\u0423\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442\u0020\u0438\u043D\u0434\u0435\u043A\u0441\u0020\u0434\u043B\u044F\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_setIndexLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AsetStatusLog\u0028\u0029",
+            "name": "setStatusLog",
+            "summary": "\u0423\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442\u0020\u0441\u0442\u0430\u0442\u0443\u0441\u0020\u0434\u043B\u044F\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_setStatusLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AsetMessageLog\u0028\u0029",
+            "name": "setMessageLog",
+            "summary": "\u041C\u0435\u0442\u043E\u0434\u0020\u0443\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442\u0020\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0020\u0434\u043B\u044F\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F",
+            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_setMessageLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AgetMessageLog\u0028\u0029",
+            "name": "getMessageLog",
+            "summary": "\u041C\u0435\u0442\u043E\u0434\u0020\u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u043E\u0442\u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E\u0435\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435",
+            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getMessageLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AgetIndexLog\u0028\u0029",
+            "name": "getIndexLog",
+            "summary": "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u0443\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u044B\u0439\u0020\u0438\u043D\u0434\u0435\u043A\u0441\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getIndexLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AgetStatusLog\u0028\u0029",
+            "name": "getStatusLog",
+            "summary": "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u0443\u0440\u043E\u0432\u0435\u043D\u044C\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getStatusLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AgetDateTime\u0028\u0029",
+            "name": "getDateTime",
+            "summary": "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u0434\u0430\u0442\u0443\u0020\u0438\u0020\u0432\u0440\u0435\u043C\u044F\u0020\u0444\u0438\u043A\u0441\u0430\u0446\u0438\u0438\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_getDateTime"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AgenerateMessageLog\u0028\u0029",
+            "name": "generateMessageLog",
+            "summary": "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u0441\u0433\u0435\u043D\u0435\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u0443\u044E\u0020\u0441\u0442\u0440\u043E\u043A\u0443\u0020\u0434\u043B\u044F\u0020\u043B\u043E\u0433\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_generateMessageLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\interfaces\\Formatter\u003A\u003AcheckGenerateMessage\u0028\u0029",
+            "name": "checkGenerateMessage",
+            "summary": "\u041F\u0440\u043E\u0432\u0435\u0440\u043A\u0430\u0020\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E\u0441\u0442\u0438\u0020\u0441\u0433\u0435\u043D\u0435\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E\u0433\u043E\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F",
+            "url": "classes/vadimcontenthunter-MyLogger-interfaces-Formatter.html#method_checkGenerateMessage"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger",
             "name": "MyLogger",
-            "summary": "",
+            "summary": "\u041A\u043B\u0430\u0441\u0441\u0020\u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F\u0020\u0442\u043E\u0447\u043A\u043E\u0439\u0020\u0432\u0445\u043E\u0434\u0430\u0020\u0434\u043B\u044F\u0020\u0446\u0435\u043F\u043E\u0447\u043D\u043E\u0433\u043E\u0020\u043B\u043E\u0433\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initializes\u0020the\u0020MyLogger",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method___construct"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003AcheckLoggers\u0028\u0029",
             "name": "checkLoggers",
-            "summary": "",
+            "summary": "\u041F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0020\u043A\u0430\u0436\u0434\u044B\u0439\u0020\u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0020\u0441\u043F\u0438\u0441\u043A\u0430\u0020\u043B\u043E\u0433\u0433\u0435\u0440\u043E\u0432\u0020\u043D\u0430\u0020\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u044E\u0020\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430\u0020\u0022LoggerInterface\u0022.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_checkLoggers"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Aexecute\u0028\u0029",
+            "name": "execute",
+            "summary": "\u0412\u044B\u043F\u043E\u043B\u043D\u044F\u0435\u0442\u0020\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0443\u044E\u0020\u0444\u0443\u043D\u043A\u0446\u0438\u044E\u0020\u043A\u043E\u0442\u043E\u0440\u0430\u044F\u0020\u0432\u0020\u043A\u0430\u0447\u0435\u0441\u0442\u0432\u0435\u0020\u0430\u0440\u0433\u0443\u043C\u0435\u043D\u0442\u0430\u0020\u043F\u0440\u0438\u043D\u0438\u043C\u0430\u0435\u0442\u0020\u0441\u043F\u0438\u0441\u043E\u043A\u0020\u0441\u0020\u043B\u043E\u0433\u0433\u0435\u0440\u0430\u043C\u0438.",
+            "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_execute"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Aemergency\u0028\u0029",
             "name": "emergency",
-            "summary": "",
+            "summary": "System\u0020is\u0020unusable.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_emergency"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Aalert\u0028\u0029",
             "name": "alert",
-            "summary": "",
+            "summary": "Action\u0020must\u0020be\u0020taken\u0020immediately.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_alert"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Acritical\u0028\u0029",
             "name": "critical",
-            "summary": "",
+            "summary": "Critical\u0020conditions.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_critical"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Aerror\u0028\u0029",
             "name": "error",
-            "summary": "",
+            "summary": "Runtime\u0020errors\u0020that\u0020do\u0020not\u0020require\u0020immediate\u0020action\u0020but\u0020should\u0020typically\nbe\u0020logged\u0020and\u0020monitored.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_error"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Awarning\u0028\u0029",
             "name": "warning",
-            "summary": "",
+            "summary": "Normal\u0020but\u0020significant\u0020events.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_warning"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Anotice\u0028\u0029",
             "name": "notice",
-            "summary": "",
+            "summary": "Interesting\u0020events.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_notice"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Ainfo\u0028\u0029",
             "name": "info",
-            "summary": "",
+            "summary": "Detailed\u0020debug\u0020information.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_info"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Adebug\u0028\u0029",
             "name": "debug",
-            "summary": "",
+            "summary": "Detailed\u0020debug\u0020information.",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_debug"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003Alog\u0028\u0029",
+            "name": "log",
+            "summary": "Logs\u0020with\u0020an\u0020arbitrary\u0020level.",
+            "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#method_log"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003A\u0024loggers",
             "name": "loggers",
-            "summary": "",
+            "summary": "\u041C\u0430\u0441\u0441\u0438\u0432\u0020\u0445\u0440\u0430\u043D\u044F\u0449\u0438\u0439\u0020\u0441\u043F\u0438\u0441\u043E\u043A\u0020\u043B\u043E\u0433\u0433\u0435\u0440\u043E\u0432",
             "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#property_loggers"
         },                {
-            "fqsen": "\\vadimcontenthunter\\MyLogger\\MyLogger\u003A\u003A\u0024formatter",
-            "name": "formatter",
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\NoLoggerException",
+            "name": "NoLoggerException",
+            "summary": "\u0418\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0020\u0441\u043E\u043E\u0431\u0449\u0430\u0435\u0442\u0020\u043E\u0020\u0442\u043E\u043C\u0020\u0447\u0442\u043E\u0020\u043A\u043B\u0430\u0441\u0441\u0020\u043D\u0435\u0020\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442\u0020\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0443\u0020\u0027LoggerInterface\u0027.",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-NoLoggerException.html"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\NoLoggerException\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initializes\u0020the\u0020NoLoggerException",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-NoLoggerException.html#method___construct"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger",
+            "name": "ConsoleLogger",
+            "summary": "\u041B\u043E\u0433\u0433\u0435\u0440\u0020\u0444\u0438\u043A\u0441\u0438\u0440\u0443\u0435\u0442\u0020\u0441\u043E\u0431\u044B\u0442\u0438\u044F\u0020\u0432\u0020\u043A\u043E\u043D\u0441\u043E\u043B\u044C",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initializes\u0020the\u0020ConsoleLogger",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method___construct"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003AgetFormatterClass\u0028\u0029",
+            "name": "getFormatterClass",
+            "summary": "\u041F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0020\u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u0020\u043A\u043B\u0430\u0441\u0441\u0430\u0020\u043D\u0430\u0020\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E\u0441\u0442\u044C\u0020\u0438\u0020\u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u0020\u043A\u043B\u0430\u0441\u0441\u0430",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_getFormatterClass"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003AgetStatusSavetoLogList\u0028\u0029",
+            "name": "getStatusSavetoLogList",
+            "summary": "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020true,\u0020\u0435\u0441\u043B\u0438\u0020\u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435\u0020\u0432\u0441\u0435\u0445\u0020\u043B\u043E\u0433\u043E\u0432\u0020\u0412\u041A\u041B\u042E\u0427\u0415\u041D\u041E\u0020\u0438\u043D\u0430\u0447\u0435\u0020false",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_getStatusSavetoLogList"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003AgetLogMessageFromListLogsById\u0028\u0029",
+            "name": "getLogMessageFromListLogsById",
+            "summary": "\u0412\u044B\u0432\u043E\u0434\u0438\u0442\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435\u0020\u043B\u043E\u0433\u0430\u0020\u043F\u043E\u0020\u0435\u0433\u043E\u0020\u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u0020\u0438\u0437\u0020\u0441\u043F\u0438\u0441\u043A\u0430\u0020\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u043D\u044B\u0445\u0020\u043B\u043E\u0433\u043E\u0432.\u0020\u0028listLogs\u005Bid\u005D\u0029",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_getLogMessageFromListLogsById"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003AgetLogMessageFromListLogsByIndex\u0028\u0029",
+            "name": "getLogMessageFromListLogsByIndex",
+            "summary": "\u0412\u044B\u0432\u043E\u0434\u0438\u0442\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435\u0020\u043B\u043E\u0433\u0430\u0020\u043F\u043E\u0020\u0435\u0433\u043E\u0020\u0443\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u043E\u043C\u0443\u0020\u0438\u043D\u0434\u0435\u043A\u0441\u0443\u0020\u0438\u0437\u0020\u0441\u043F\u0438\u0441\u043A\u0430\u0020\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u043D\u044B\u0445\u0020\u043B\u043E\u0433\u043E\u0432",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_getLogMessageFromListLogsByIndex"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003AgetLogMessageFromListLogsByStatusLog\u0028\u0029",
+            "name": "getLogMessageFromListLogsByStatusLog",
+            "summary": "\u0412\u044B\u0432\u043E\u0434\u0438\u0442\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F\u0020\u043B\u043E\u0433\u043E\u0432\u0020\u043F\u043E\u0020\u0438\u0445\u0020\u0441\u0442\u0430\u0442\u0443\u0441\u0443\u0020\u0438\u0437\u0020\u0441\u043F\u0438\u0441\u043A\u0430\u0020\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u043D\u044B\u0445\u0020\u043B\u043E\u0433\u043E\u0432",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_getLogMessageFromListLogsByStatusLog"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003AgetLogMessageFromListLogsByDateTime\u0028\u0029",
+            "name": "getLogMessageFromListLogsByDateTime",
+            "summary": "\u0412\u044B\u0432\u043E\u0434\u0438\u0442\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F\u0020\u043B\u043E\u0433\u043E\u0432\u0020\u043F\u043E\u0020\u0438\u0445\u0020\u0441\u0442\u0430\u0442\u0443\u0441\u0443\u0020\u0438\u0437\u0020\u0441\u043F\u0438\u0441\u043A\u0430\u0020\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u043D\u044B\u0445\u0020\u043B\u043E\u0433\u043E\u0432",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_getLogMessageFromListLogsByDateTime"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003AgetLogMessageFromListLogsByMessage\u0028\u0029",
+            "name": "getLogMessageFromListLogsByMessage",
+            "summary": "\u0412\u044B\u0432\u043E\u0434\u0438\u0442\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F\u0020\u043B\u043E\u0433\u043E\u0432\u0020\u043F\u043E\u0020\u0438\u0445\u0020\u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044E,\u0020\u043E\u043F\u0438\u0441\u0430\u043D\u0438\u044E\u0020\u043B\u043E\u0433\u043E\u0432\u0020\u0438\u0437\u0020\u0441\u043F\u0438\u0441\u043A\u0430\u0020\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u043D\u044B\u0445\u0020\u043B\u043E\u0433\u043E\u0432",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_getLogMessageFromListLogsByMessage"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003AaddLogMessageInListLogs\u0028\u0029",
+            "name": "addLogMessageInListLogs",
+            "summary": "\u0414\u043E\u0431\u0430\u0432\u043B\u044F\u0435\u0442\u0020\u043E\u0431\u044A\u0435\u043A\u0442\u0020\u0444\u043E\u0440\u043C\u0430\u0442\u0435\u0440\u0430\u0020\u0432\u0020\u0441\u043F\u0438\u0441\u043E\u043A\u0020\u043B\u043E\u0433\u043E\u0432",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_addLogMessageInListLogs"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003Aemergency\u0028\u0029",
+            "name": "emergency",
+            "summary": "System\u0020is\u0020unusable.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_emergency"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003Aalert\u0028\u0029",
+            "name": "alert",
+            "summary": "Action\u0020must\u0020be\u0020taken\u0020immediately.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_alert"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003Acritical\u0028\u0029",
+            "name": "critical",
+            "summary": "Critical\u0020conditions.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_critical"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003Aerror\u0028\u0029",
+            "name": "error",
+            "summary": "Runtime\u0020errors\u0020that\u0020do\u0020not\u0020require\u0020immediate\u0020action\u0020but\u0020should\u0020typically\nbe\u0020logged\u0020and\u0020monitored.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_error"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003Awarning\u0028\u0029",
+            "name": "warning",
+            "summary": "Exceptional\u0020occurrences\u0020that\u0020are\u0020not\u0020errors.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_warning"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003Anotice\u0028\u0029",
+            "name": "notice",
+            "summary": "Normal\u0020but\u0020significant\u0020events.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_notice"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003Ainfo\u0028\u0029",
+            "name": "info",
+            "summary": "Interesting\u0020events.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_info"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003Adebug\u0028\u0029",
+            "name": "debug",
+            "summary": "Detailed\u0020debug\u0020information.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_debug"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003Alog\u0028\u0029",
+            "name": "log",
+            "summary": "Logs\u0020with\u0020an\u0020arbitrary\u0020level.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#method_log"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003A\u0024listLogs",
+            "name": "listLogs",
+            "summary": "\u0425\u0440\u0430\u043D\u0438\u0442\u0020\u0432\u0441\u0435\u0020\u0437\u0430\u0444\u0438\u043A\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0435\u0020\u043B\u043E\u0433\u0438",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#property_listLogs"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003A\u0024saveToLogList",
+            "name": "saveToLogList",
+            "summary": "\u0412\u044B\u043F\u043E\u043B\u043D\u044F\u0442\u044C\u0020\u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F\u0020\u0432\u0441\u0435\u0445\u0020\u043B\u043E\u0433\u043E\u0432.",
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#property_saveToLogList"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules\\ConsoleLogger\u003A\u003A\u0024formatterClass",
+            "name": "formatterClass",
             "summary": "",
-            "url": "classes/vadimcontenthunter-MyLogger-MyLogger.html#property_formatter"
+            "url": "classes/vadimcontenthunter-MyLogger-modules-ConsoleLogger.html#property_formatterClass"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\IncorrectMessageGenerationException",
+            "name": "IncorrectMessageGenerationException",
+            "summary": "\u0418\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0020\u0441\u043E\u043E\u0431\u0449\u0430\u0435\u0442\u0020\u043E\u0020\u0442\u043E\u043C\u0020\u0447\u0442\u043E\u0020\u043A\u043B\u0430\u0441\u0441\u0020\u043D\u0435\u0020\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442\u0020\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0443\u0020\u0027LoggerInterface\u0027.",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-IncorrectMessageGenerationException.html"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\IncorrectMessageGenerationException\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initializes\u0020the\u0020IncorrectMessageGenerationException",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-IncorrectMessageGenerationException.html#method___construct"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\InvalidArgumentException",
+            "name": "InvalidArgumentException",
+            "summary": "\u0418\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0020\u0441\u043E\u043E\u0431\u0449\u0430\u0435\u0442\u0020\u043E\u0020\u0442\u043E\u043C\u0020\u0447\u0442\u043E\u0020\u043A\u043B\u0430\u0441\u0441\u0020\u043D\u0435\u0020\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442\u0020\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0443\u0020\u0027LoggerInterface\u0027.",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-InvalidArgumentException.html"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\InvalidArgumentException\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initializes\u0020the\u0020InvalidArgumentException",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-InvalidArgumentException.html#method___construct"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\NoFormatterException",
+            "name": "NoFormatterException",
+            "summary": "\u0418\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0020\u0441\u043E\u043E\u0431\u0449\u0430\u0435\u0442\u0020\u043E\u0020\u0442\u043E\u043C\u0020\u0447\u0442\u043E\u0020\u043A\u043B\u0430\u0441\u0441\u0020\u043D\u0435\u0020\u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442\u0020\u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0443\u0020\u0027LoggerInterface\u0027.",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-NoFormatterException.html"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\NoFormatterException\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initializes\u0020the\u0020NoFormatterException",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-NoFormatterException.html#method___construct"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\NotEnabledFlagException",
+            "name": "NotEnabledFlagException",
+            "summary": "\u0418\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0020\u0441\u043E\u043E\u0431\u0449\u0430\u0435\u0442\u0020\u043E\u0020\u0442\u043E\u043C\u0020\u0447\u0442\u043E\u0020\u043D\u0435\u0020\u0430\u043A\u0442\u0438\u0432\u0438\u0440\u043E\u0432\u0430\u043D\u0020\u0444\u043B\u0430\u0433.",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-NotEnabledFlagException.html"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\NotEnabledFlagException\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initializes\u0020the\u0020SavingNotEnabledException",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-NotEnabledFlagException.html#method___construct"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\WrongExpectedResultException",
+            "name": "WrongExpectedResultException",
+            "summary": "\u0418\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\u0020\u0441\u043E\u043E\u0431\u0449\u0430\u0435\u0442\u0020\u043E\u0020\u0442\u043E\u043C\u0020\u0447\u0442\u043E\u0020\u0431\u044B\u043B\u0020\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0020\u043D\u0435\u0432\u0435\u0440\u043D\u044B\u0439\u0020\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442.",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-WrongExpectedResultException.html"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\exceptions\\WrongExpectedResultException\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initializes\u0020the\u0020WrongExpectedResultException",
+            "url": "classes/vadimcontenthunter-MyLogger-exceptions-WrongExpectedResultException.html#method___construct"
         },                {
             "fqsen": "\\",
             "name": "\\",
@@ -115,6 +400,11 @@ Search.appendIndex(
             "name": "interfaces",
             "summary": "",
             "url": "namespaces/vadimcontenthunter-mylogger-interfaces.html"
+        },                {
+            "fqsen": "\\vadimcontenthunter\\MyLogger\\modules",
+            "name": "modules",
+            "summary": "",
+            "url": "namespaces/vadimcontenthunter-mylogger-modules.html"
         },                {
             "fqsen": "\\vadimcontenthunter\\MyLogger",
             "name": "MyLogger",
