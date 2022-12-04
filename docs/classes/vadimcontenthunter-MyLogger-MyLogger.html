@@ -249,7 +249,7 @@ be logged and monitored.</dd>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Выполняет пользовательскую функцию которая в качестве аргумента принимает список с логгерами.</dd>
+<dd>Выполняет пользовательскую функцию которая в качестве аргумента принимает элемент из списка с логгерами.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/vadimcontenthunter-MyLogger-MyLogger.html#method_info">info()</a>
@@ -657,13 +657,13 @@ be logged and monitored.</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Выполняет пользовательскую функцию которая в качестве аргумента принимает список с логгерами.</p>
+        <p class="phpdocumentor-summary">Выполняет пользовательскую функцию которая в качестве аргумента принимает элемент из списка с логгерами.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">execute</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callBackFun</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"><p>Вид пользовательской функции: func(array[LoggerInterface] loggers)</p>
+        <section class="phpdocumentor-description"><p>Вид пользовательской функции: function(LoggerInterface logger)</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -673,7 +673,7 @@ be logged and monitored.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">callable</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>func(array[LoggerInterface] loggers)</p>
+                    <section class="phpdocumentor-description"><p>function(LoggerInterface logger)</p>
 </section>
 
             </dd>
