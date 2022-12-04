@@ -62,10 +62,10 @@ class MyLogger implements LoggerInterface
     }
 
     /**
-     * Выполняет пользовательскую функцию которая в качестве аргумента принимает список с логгерами.
-     * Вид пользовательской функции: func(array[LoggerInterface] loggers)
+     * Выполняет пользовательскую функцию которая в качестве аргумента принимает элемент из списка с логгерами.
+     * Вид пользовательской функции: function(LoggerInterface logger)
      *
-     * @param callable $callBackFun func(array[LoggerInterface] loggers)
+     * @param callable $callBackFun function(LoggerInterface logger)
      *
      * @return void
      */
