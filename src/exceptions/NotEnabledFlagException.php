@@ -14,7 +14,7 @@ namespace vadimcontenthunter\MyLogger\exceptions;
 class NotEnabledFlagException extends MyLoggerException
 {
     /**
-     * Initializes the SavingNotEnabledException
+     * Initializes the NotEnabledFlagException
      *
      * @param mixed $_message
      */
